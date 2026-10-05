@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/cross-way-center-academy/browser",
+    "public": "dist/cross-way-center-academy/browser/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -14,5 +14,3 @@
     ]
   }
 }
- 
- 

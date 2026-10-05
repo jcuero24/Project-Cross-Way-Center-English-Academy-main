@@ -20,12 +20,12 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --background-color: #ffffffc9; /* Background color for the entire website, including individual sections */
   --default-color: #000000; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #040677; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #ff0000; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --contrast-color: #000000; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -38,16 +38,16 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #929191;
+  --background-color: #919191c9;
   --surface-color: #ffffff;
 }
 
 .dark-background {
-  --background-color: #929191;
-  --default-color: white;
+  --background-color: #ffffff;
+  --default-color: #919191c9;
   --heading-color: blue;
-  --surface-color: #777777;
-  --contrast-color: #ffffff;
+  --surface-color: #ffffff;
+  --contrast-color: #000000;
 }
 
 /* Smooth scroll */
@@ -141,7 +141,7 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: rgb(155, 155, 155);
+  --background-color: rgb(255, 255, 255);
   --default-color: #1005b3;
   --heading-color: blue;
   color: var(--default-color);
@@ -442,15 +442,15 @@ h6 {
 # Global Footer
 --------------------------------------------------------------*/
 .footer {
-  color: var(--default-color);
-  background-color: var(--background-color);
+  color: #000000;
+  background-color: #919191c9;
   font-size: 14px;
   position: relative;
 }
 
 .footer .footer-top {
   padding-top: 50px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 100%);
 }
 
 .footer .footer-about .logo {
@@ -485,7 +485,7 @@ h6 {
   border-radius: 50%;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
   font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: #000000;
   margin-right: 10px;
   transition: 0.3s;
 }
@@ -529,7 +529,7 @@ h6 {
 }
 
 .footer .footer-links ul a {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color:  #000000;
   display: inline-block;
   line-height: 1;
 }
