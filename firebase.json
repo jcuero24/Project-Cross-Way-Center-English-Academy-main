@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "cross-way-center-tulua",
     "public": "dist/cross-way-center-academy/browser/browser",
     "ignore": [
       "firebase.json",

@@ -41,6 +41,11 @@
                 "glob": "**/*",
                 "input": "src/assets/cross-way-images",
                 "output": "cross-way-images"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/cross-way-images/slider",
+                "output": "cross-way-images/slider"
               }
             ],
             "styles": [
