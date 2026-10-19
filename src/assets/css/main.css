@@ -2287,3 +2287,59 @@ html[data-theme="dark"] .navmenu ul { background: #ffffff; }
   }
   .footer-map { height: 210px; }
 }
+
+/* Neutral charcoal content palette with a deep-blue footer. */
+html[data-theme="dark"] {
+  --cwc-page-gray: #46515d;
+  --cwc-card-gray: #56616d;
+  --cwc-footer-blue: #102b52;
+}
+html[data-theme="dark"] body { background: var(--cwc-page-gray); }
+html[data-theme="dark"] .main > section:not(#hero) {
+  --background-color: var(--cwc-page-gray);
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: var(--cwc-card-gray);
+  color: #ffffff;
+  background: var(--cwc-page-gray) !important;
+}
+html[data-theme="dark"] .main > section:not(#hero) h1,
+html[data-theme="dark"] .main > section:not(#hero) h2,
+html[data-theme="dark"] .main > section:not(#hero) h3,
+html[data-theme="dark"] .main > section:not(#hero) h4,
+html[data-theme="dark"] .main > section:not(#hero) p,
+html[data-theme="dark"] .main > section:not(#hero) li,
+html[data-theme="dark"] .main > section:not(#hero) label,
+html[data-theme="dark"] .main > section:not(#hero) .section-title,
+html[data-theme="dark"] .main > section:not(#hero) .section-title h2,
+html[data-theme="dark"] .main > section:not(#hero) .section-title p {
+  color: #ffffff;
+}
+html[data-theme="dark"] .main > section:not(#hero) .section-title h2 span,
+html[data-theme="dark"] #services .features-item h3 { color: #ff8793; }
+html[data-theme="dark"] #hero .wave1 use,
+html[data-theme="dark"] #hero .wave2 use,
+html[data-theme="dark"] #hero .wave3 use { fill: var(--cwc-page-gray); }
+html[data-theme="dark"] .stats .stats-item {
+  border-color: #727d89;
+  background: var(--cwc-card-gray);
+  color: #ffffff;
+}
+html[data-theme="dark"] .stats .stats-item span,
+html[data-theme="dark"] .stats .stats-item p { color: #ffffff; }
+html[data-theme="dark"] .faq .faq-container .faq-item {
+  border-color: #74808c;
+  background: var(--cwc-card-gray);
+  color: #ffffff;
+}
+html[data-theme="dark"] .faq .faq-container .faq-item h3,
+html[data-theme="dark"] .faq .faq-container .faq-item .faq-content p,
+html[data-theme="dark"] .faq .faq-container .faq-item .faq-icon,
+html[data-theme="dark"] .faq .faq-container .faq-item .faq-toggle { color: #ffffff; }
+html[data-theme="dark"] .faq .faq-container .faq-item.faq-active h3,
+html[data-theme="dark"] .faq .faq-container .faq-item .faq-toggle:hover { color: #ff8793; }
+html[data-theme="dark"] .footer.dark-background {
+  --background-color: var(--cwc-footer-blue);
+  background: var(--cwc-footer-blue);
+  color: #ffffff;
+}
