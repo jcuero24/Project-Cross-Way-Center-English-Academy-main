@@ -22,17 +22,21 @@
       </div>
 
       <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="#hero">{{ t('Inicio', 'Home') }}</a></li>
-          <li><a href="#about">{{ t('Acerca de', 'About') }}</a></li>
-          <li><a href="#services">{{ t('Servicios', 'Courses') }}</a></li>
-          <li><a href="#gallery">{{ t('Galería', 'Gallery') }}</a></li>
-          <li><a href="#testimonials">{{ t('Testimonios', 'Testimonials') }}</a></li>
-          <li><a href="#team">{{ t('Equipo', 'Team') }}</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#contact">{{ t('Contacto', 'Contact') }}</a></li>
+        <ul id="navmenu-links">
+          <li><a href="#hero" (click)="closeMobileNav()">{{ t('Inicio', 'Home') }}</a></li>
+          <li><a href="#about" (click)="closeMobileNav()">{{ t('Acerca de', 'About') }}</a></li>
+          <li><a href="#services" (click)="closeMobileNav()">{{ t('Servicios', 'Courses') }}</a></li>
+          <li><a href="#gallery" (click)="closeMobileNav()">{{ t('Galería', 'Gallery') }}</a></li>
+          <li><a href="#testimonials" (click)="closeMobileNav()">{{ t('Testimonios', 'Testimonials') }}</a></li>
+          <li><a href="#team" (click)="closeMobileNav()">{{ t('Equipo', 'Team') }}</a></li>
+          <li><a href="#faq" (click)="closeMobileNav()">FAQ</a></li>
+          <li><a href="#contact" (click)="closeMobileNav()">{{ t('Contacto', 'Contact') }}</a></li>
         </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        <button type="button" class="mobile-nav-toggle d-xl-none" (click)="toggleMobileNav()"
+          [attr.aria-expanded]="mobileNavOpen" aria-controls="navmenu-links"
+          [attr.aria-label]="mobileNavOpen ? t('Cerrar menú', 'Close menu') : t('Abrir menú', 'Open menu')">
+          <i [class.bi-list]="!mobileNavOpen" [class.bi-x]="mobileNavOpen" aria-hidden="true"></i>
+        </button>
       </nav>
 
     </div>

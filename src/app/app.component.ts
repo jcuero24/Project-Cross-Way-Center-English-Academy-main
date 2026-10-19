@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
   })
 export class AppComponent {
   language: 'es' | 'en' = 'es';
+  mobileNavOpen = false;
   chatOpen = false;
   welcomeVideoOpen = false;
   chatInput = '';
@@ -131,6 +132,21 @@ export class AppComponent {
 
   t(es: string, en: string): string {
     return this.language === 'es' ? es : en;
+  }
+
+  toggleMobileNav(): void {
+    this.mobileNavOpen = !this.mobileNavOpen;
+    document.body.classList.toggle('mobile-nav-active', this.mobileNavOpen);
+  }
+
+  closeMobileNav(): void {
+    this.mobileNavOpen = false;
+    document.body.classList.remove('mobile-nav-active');
+  }
+
+  @HostListener('document:keydown.escape')
+  closeMobileNavOnEscape(): void {
+    if (this.mobileNavOpen) this.closeMobileNav();
   }
 
   openWelcomeVideo(): void {
