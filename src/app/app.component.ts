@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 export class AppComponent {
   language: 'es' | 'en' = 'es';
   chatOpen = false;
+  welcomeVideoOpen = false;
   chatInput = '';
   chatMessages: { role: 'assistant' | 'user'; text: string }[] = [];
   @ViewChild('chatMessagesView') private chatMessagesElement?: ElementRef<HTMLDivElement>;
@@ -82,6 +83,21 @@ export class AppComponent {
   cookieChoice: 'accepted' | 'rejected' | null = null;
   testimonialExpanded: Record<number, boolean> = {};
   private readonly formOpenedAt = Date.now();
+  private readonly testimonialFormOpenedAt = Date.now();
+
+  testimonialForm = {
+    name: '',
+    email: '',
+    course: '',
+    review: '',
+    rating: 5,
+    website: '',
+    privacyAccepted: false,
+    publicationAccepted: false,
+  };
+  testimonialLoading = false;
+  testimonialSuccessMessage = '';
+  testimonialErrorMessage = '';
 
   contactForm = {
     nombre: '',
@@ -115,6 +131,14 @@ export class AppComponent {
 
   t(es: string, en: string): string {
     return this.language === 'es' ? es : en;
+  }
+
+  openWelcomeVideo(): void {
+    this.welcomeVideoOpen = true;
+  }
+
+  closeWelcomeVideo(): void {
+    this.welcomeVideoOpen = false;
   }
 
   setLanguage(language: 'es' | 'en'): void {
@@ -186,6 +210,61 @@ export class AppComponent {
 
   toggleTestimonial(index: number): void {
     this.testimonialExpanded[index] = !this.testimonialExpanded[index];
+  }
+
+  submitTestimonial(): void {
+    this.testimonialSuccessMessage = '';
+    this.testimonialErrorMessage = '';
+
+    if (this.testimonialForm.website.trim()) return;
+    if (!this.testimonialForm.privacyAccepted || !this.testimonialForm.publicationAccepted) {
+      this.testimonialErrorMessage = this.t('Acepta el tratamiento de datos y la autorización de publicación para continuar.', 'Please accept data processing and publication consent to continue.');
+      return;
+    }
+    if (this.testimonialForm.review.trim().length < 20) {
+      this.testimonialErrorMessage = this.t('Escribe al menos 20 caracteres para tu testimonio.', 'Please write at least 20 characters for your testimonial.');
+      return;
+    }
+    if (Date.now() - this.testimonialFormOpenedAt < 2500) {
+      this.testimonialErrorMessage = this.t('Espera un momento y vuelve a enviar el formulario.', 'Please wait a moment before submitting the form.');
+      return;
+    }
+
+    const now = Date.now();
+    try {
+      const lastSubmission = Number(localStorage.getItem('cwc-last-testimonial-submit') || 0);
+      if (now - lastSubmission < 30000) {
+        this.testimonialErrorMessage = this.t('Espera 30 segundos antes de enviar otro testimonio.', 'Please wait 30 seconds before submitting another testimonial.');
+        return;
+      }
+      localStorage.setItem('cwc-last-testimonial-submit', String(now));
+    } catch {
+      // Keep the in-page timing and honeypot checks when storage is unavailable.
+    }
+
+    this.testimonialLoading = true;
+    const review = [
+      `Valoración / Rating: ${this.testimonialForm.rating}/5`,
+      `Programa / Program: ${this.testimonialForm.course.trim() || 'No especificado / Not provided'}`,
+      `Autorización: publicación permitida tras revisión / Publication allowed after review`,
+      '',
+      this.testimonialForm.review.trim(),
+    ].join('\n');
+
+    emailjs.send('service_xtwmq2k', 'template_cmj5odv', {
+      nombre: this.testimonialForm.name.trim(),
+      email: this.testimonialForm.email.trim(),
+      asunto: 'Nuevo testimonio web — Cross Way Center',
+      mensaje: review,
+    }).then(() => {
+      this.testimonialSuccessMessage = this.t('Gracias. Recibimos tu testimonio para revisión; no se publica automáticamente.', 'Thank you. Your testimonial was received for review; it is not published automatically.');
+      this.testimonialForm = { name: '', email: '', course: '', review: '', rating: 5, website: '', privacyAccepted: false, publicationAccepted: false };
+      this.testimonialLoading = false;
+    }).catch(() => {
+      this.testimonialErrorMessage = this.t('No se pudo enviar el testimonio. Intenta de nuevo o contáctanos por WhatsApp.', 'We could not submit your testimonial. Please try again or contact us on WhatsApp.');
+      this.testimonialLoading = false;
+      try { localStorage.removeItem('cwc-last-testimonial-submit'); } catch { /* storage may be unavailable */ }
+    });
   }
 
   chooseCookies(accepted: boolean): void {

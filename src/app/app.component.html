@@ -55,10 +55,13 @@
             <h1><span>Cross Way Center</span></h1>
             <h2>{{ t('40 años de experiencia enseñando inglés', '40 years of English teaching experience') }}</h2>
             <p class="hero-founded">{{ t('Fundada en Tuluá en 1986 · Aprendizaje para cada etapa de la vida', 'Founded in Tuluá in 1986 · English learning for every stage of life') }}</p>
-            <div class="d-flex">
+            <div class="hero-actions d-flex flex-wrap">
               <a href="https://wa.me/573173798422?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" class="btn-get-started" target="_blank" rel="noopener noreferrer">
                 <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>{{ t('Hablar por WhatsApp', 'Chat on WhatsApp') }}
               </a>
+              <button type="button" class="btn-get-started btn-watch-video" (click)="openWelcomeVideo()">
+                <i class="bi bi-play-circle me-2" aria-hidden="true"></i>{{ t('Ver video de bienvenida', 'Watch welcome video') }}
+              </button>
             </div>
           </div>
 
@@ -81,6 +84,24 @@
       </svg>
 
     </section><!-- /Home Section -->
+
+    <div *ngIf="welcomeVideoOpen" class="welcome-video-backdrop" role="presentation" (click)="closeWelcomeVideo()" (keydown.escape)="closeWelcomeVideo()">
+      <section class="welcome-video-dialog" role="dialog" aria-modal="true" aria-labelledby="welcome-video-title" (click)="$event.stopPropagation()">
+        <div class="welcome-video-heading">
+          <h2 id="welcome-video-title">{{ t('Bienvenido a Cross Way Center', 'Welcome to Cross Way Center') }}</h2>
+          <button type="button" class="welcome-video-close" (click)="closeWelcomeVideo()" [attr.aria-label]="t('Cerrar video', 'Close video')">×</button>
+        </div>
+        <div class="welcome-video-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/3uqa2l1IPgA?autoplay=1&amp;rel=0"
+            [title]="t('Video de bienvenida de Cross Way Center', 'Cross Way Center welcome video')"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+    </div>
 
     <!-- Stats Section -->
     <section id="stats" class="stats section light-background">
@@ -363,6 +384,69 @@
           </article>
         </div>
       </div>
+
+      <section class="testimonial-submit" aria-labelledby="testimonial-submit-title">
+        <div class="testimonial-submit-copy">
+          <span class="testimonial-submit-kicker">{{ t('Tu experiencia también cuenta', 'Your story matters too') }}</span>
+          <h3 id="testimonial-submit-title">{{ t('Comparte tu testimonio', 'Share your experience') }}</h3>
+          <p>{{ t('Cuéntanos cómo ha sido tu experiencia en Cross Way Center. Revisaremos cada envío antes de publicarlo.', 'Tell us about your experience at Cross Way Center. We review every submission before publishing it.') }}</p>
+        </div>
+        <form class="testimonial-form" (ngSubmit)="submitTestimonial()">
+          <div class="testimonial-honeypot" aria-hidden="true">
+            <label for="testimonial-website">{{ t('Deja este campo vacío', 'Leave this field empty') }}</label>
+            <input id="testimonial-website" type="text" [(ngModel)]="testimonialForm.website" name="testimonialWebsite" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="visually-hidden" for="testimonial-name">{{ t('Tu nombre', 'Your name') }}</label>
+              <input id="testimonial-name" class="form-control" [placeholder]="t('Tu nombre', 'Your name')" [(ngModel)]="testimonialForm.name" name="testimonialName" maxlength="80" autocomplete="name" required>
+            </div>
+            <div class="col-md-6">
+              <label class="visually-hidden" for="testimonial-email">{{ t('Tu correo electrónico', 'Your email address') }}</label>
+              <input id="testimonial-email" class="form-control" type="email" [placeholder]="t('Tu correo electrónico', 'Your email address')" [(ngModel)]="testimonialForm.email" name="testimonialEmail" maxlength="150" autocomplete="email" required>
+            </div>
+            <div class="col-12">
+              <label class="visually-hidden" for="testimonial-course">{{ t('Programa o nivel cursado (opcional)', 'Program or level studied (optional)') }}</label>
+              <input id="testimonial-course" class="form-control" [placeholder]="t('Programa o nivel cursado (opcional)', 'Program or level studied (optional)')" [(ngModel)]="testimonialForm.course" name="testimonialCourse" maxlength="100">
+            </div>
+            <div class="col-12">
+              <label class="visually-hidden" for="testimonial-review">{{ t('Escribe tu testimonio', 'Write your testimonial') }}</label>
+              <textarea id="testimonial-review" class="form-control" rows="5" [placeholder]="t('¿Qué te gustaría compartir sobre tu experiencia?', 'What would you like to share about your experience?')" [(ngModel)]="testimonialForm.review" name="testimonialReview" minlength="20" maxlength="1200" required></textarea>
+            </div>
+            <div class="col-12">
+              <fieldset class="testimonial-rating-picker">
+                <legend>{{ t('Tu valoración', 'Your rating') }}</legend>
+                <label *ngFor="let star of [1, 2, 3, 4, 5]" [class.selected]="star <= testimonialForm.rating">
+                  <input type="radio" name="testimonialRating" [value]="star" [(ngModel)]="testimonialForm.rating" [attr.aria-label]="star + ' ' + t('estrellas', 'stars')">
+                  <span aria-hidden="true">★</span>
+                </label>
+              </fieldset>
+            </div>
+            <div class="col-12">
+              <label class="testimonial-consent">
+                <input type="checkbox" [(ngModel)]="testimonialForm.privacyAccepted" name="testimonialPrivacy" required>
+                <span>{{ t('Autorizo el tratamiento de mis datos para gestionar este testimonio y he leído la', 'I consent to the use of my data to process this testimonial and have read the') }}
+                  <a [href]="language === 'es' ? '/legal/politica-privacidad.html' : '/legal/privacy-policy.html'" target="_blank" rel="noopener noreferrer">{{ t('Política de privacidad', 'Privacy Policy') }}</a>.
+                </span>
+              </label>
+            </div>
+            <div class="col-12">
+              <label class="testimonial-consent">
+                <input type="checkbox" [(ngModel)]="testimonialForm.publicationAccepted" name="testimonialPublication" required>
+                <span>{{ t('Autorizo que, si se aprueba, mi testimonio se publique con el nombre que escribí.', 'I authorize Cross Way Center to publish my testimonial with the name I provided if it is approved.') }}</span>
+              </label>
+            </div>
+            <div class="col-12">
+              <p *ngIf="testimonialSuccessMessage" class="testimonial-form-status success" role="status">{{ testimonialSuccessMessage }}</p>
+              <p *ngIf="testimonialErrorMessage" class="testimonial-form-status error" role="alert">{{ testimonialErrorMessage }}</p>
+              <button class="testimonial-submit-button" type="submit" [disabled]="testimonialLoading">
+                <span *ngIf="!testimonialLoading"><i class="bi bi-send me-2" aria-hidden="true"></i>{{ t('Enviar testimonio', 'Submit testimonial') }}</span>
+                <span *ngIf="testimonialLoading" role="status">{{ t('Enviando…', 'Sending…') }}</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
     </div>
   </section>
   
