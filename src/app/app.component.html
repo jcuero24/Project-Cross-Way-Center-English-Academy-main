@@ -19,10 +19,6 @@
           <button type="button" (click)="setLanguage('es')" [class.active]="language === 'es'" [attr.aria-pressed]="language === 'es'">ES</button>
           <button type="button" (click)="setLanguage('en')" [class.active]="language === 'en'" [attr.aria-pressed]="language === 'en'">EN</button>
         </div>
-        <button type="button" class="theme-switch" (click)="toggleTheme()" [attr.aria-label]="theme === 'light' ? t('Activar tema oscuro', 'Switch to dark theme') : t('Activar tema claro', 'Switch to light theme')">
-          <i [class]="theme === 'light' ? 'bi bi-moon-stars' : 'bi bi-sun'" aria-hidden="true"></i>
-          <span>{{ theme === 'light' ? t('Oscuro', 'Dark') : t('Claro', 'Light') }}</span>
-        </button>
       </div>
 
       <nav id="navmenu" class="navmenu">
@@ -34,9 +30,6 @@
           <li><a href="#testimonials">{{ t('Testimonios', 'Testimonials') }}</a></li>
           <li><a href="#team">{{ t('Equipo', 'Team') }}</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a [href]="language === 'es' ? '/legal/aviso-legal.html' : '/legal/legal-notice.html'">{{ t('Aviso legal', 'Legal notice') }}</a></li>
-          <li><a [href]="language === 'es' ? '/legal/politica-privacidad.html' : '/legal/privacy-policy.html'">{{ t('Privacidad', 'Privacy') }}</a></li>
-          <li><a [href]="language === 'es' ? '/legal/aviso-cookies.html' : '/legal/cookie-notice.html'">{{ t('Cookies', 'Cookies') }}</a></li>
           <li><a href="#contact">{{ t('Contacto', 'Contact') }}</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -571,37 +564,37 @@
             <span class="sitename">Cross Way Center</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>Sajonia / Calle 34 #20-41   </p>
-            <p>Tuluá - Valle del Cauca, TLÁ 763022</p>
+            <p>{{ t('Sajonia · Calle 34 #20-41', 'Sajonia · 34th Street #20-41') }}</p>
+            <p>Tuluá, Valle del Cauca · 763022</p>
             <p class="mt-3"><strong>{{ t('Celular:', 'Phone:') }}</strong> <span> +57 317 379 8422</span></p>
             <p><strong>{{ t('Correo:', 'Email:') }}</strong> <a href="mailto:crosswaycentertulua&#64;gmail.com">crosswaycentertulua&#64;gmail.com</a></p>
-            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Cross+Way+Center%2C+Calle+34+20-41%2C+Tulu%C3%A1" target="_blank" rel="noopener noreferrer">{{ t('Ver ubicación en Google Maps', 'View on Google Maps') }}</a></p>
           </div>
-          <div class="social-links d-flex mt-4">
-            <a href="https://www.facebook.com/CrossWayCenter.Co"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/cross_way_center?igsh=MTI0d3Zjdzk5MjNhNQ=="><i class="bi bi-instagram"></i></a>
+          <p class="footer-social-title">{{ t('Síguenos en redes sociales', 'Follow us on social media') }}</p>
+          <div class="social-links d-flex" [attr.aria-label]="t('Redes sociales', 'Social media')">
+            <a href="https://www.facebook.com/CrossWayCenter.Co" target="_blank" rel="noopener noreferrer" [attr.aria-label]="t('Facebook de Cross Way Center', 'Cross Way Center on Facebook')"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/cross_way_center?igsh=MTI0d3Zjdzk5MjNhNQ==" target="_blank" rel="noopener noreferrer" [attr.aria-label]="t('Instagram de Cross Way Center', 'Cross Way Center on Instagram')"><i class="bi bi-instagram" aria-hidden="true"></i></a>
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-3 footer-links">
+        <div class="col-lg-3 col-md-6 footer-links">
           <h4>{{ t('Enlaces', 'Links') }}</h4>
           <ul>
-            <li><a href="#hero">{{ t('Inicio', 'Home') }}</a></li>
-            <li><a href="#testimonials">{{ t('Testimonios', 'Testimonials') }}</a></li>
-            <li><a href="#services">{{ t('Cursos', 'Courses') }}</a></li>
-            <li><a href="#about">{{ t('Acerca de', 'About') }}</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a [href]="language === 'es' ? '/legal/aviso-legal.html' : '/legal/legal-notice.html'">{{ t('Aviso legal', 'Legal notice') }}</a></li>
-            <li><a [href]="language === 'es' ? '/legal/politica-privacidad.html' : '/legal/privacy-policy.html'">{{ t('Privacidad', 'Privacy') }}</a></li>
-            <li><a [href]="language === 'es' ? '/legal/aviso-cookies.html' : '/legal/cookie-notice.html'">{{ t('Cookies', 'Cookies') }}</a></li>
-            <li>
-              <a
-                href="https://wa.me/573173798422"
-                target="_blank"
-                >WhatsApp</a
-              >
-            </li>
+            <li><a href="/legal/aviso-legal.html">{{ t('Aviso legal', 'Legal notice') }}</a></li>
+            <li><a href="/legal/politica-privacidad.html">{{ t('Privacidad', 'Privacy') }}</a></li>
+            <li><a href="/legal/aviso-cookies.html">{{ t('Cookies', 'Cookies') }}</a></li>
           </ul>
+        </div>
+
+        <div class="col-lg-5 col-md-12 footer-map-column">
+          <h4>{{ t('Encuéntranos en Tuluá', 'Find us in Tuluá') }}</h4>
+          <iframe
+            class="footer-map"
+            src="https://www.google.com/maps?q=Cross+Way+Center,+Calle+34+20-41,+Sajonia,+Tulu%C3%A1&amp;output=embed"
+            [title]="t('Mapa de ubicación de Cross Way Center en Tuluá', 'Map showing the location of Cross Way Center in Tuluá')"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
         </div>
 
       </div>

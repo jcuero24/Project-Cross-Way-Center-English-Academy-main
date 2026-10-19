@@ -2161,3 +2161,128 @@ html[data-theme="dark"] #hero .hero-founded { color: #414a56; }
 html[data-theme="dark"] #hero .wave1 use,
 html[data-theme="dark"] #hero .wave2 use,
 html[data-theme="dark"] #hero .wave3 use { fill: #102b52; }
+
+/* Fixed Cross Way Center palette: white header and hero, navy content. */
+html[data-theme="dark"] .header,
+html[data-theme="dark"] .scrolled .header {
+  --background-color: #ffffff;
+  --default-color: #263247;
+  --heading-color: #102b52;
+  background: #ffffff;
+  color: #263247;
+  box-shadow: 0 8px 26px rgb(16 43 82 / 12%);
+}
+html[data-theme="dark"] .header .navmenu a,
+html[data-theme="dark"] .header .navmenu a:focus,
+html[data-theme="dark"] .header .mobile-nav-toggle { color: #263247; }
+html[data-theme="dark"] .header .navmenu a:hover,
+html[data-theme="dark"] .header .navmenu .active,
+html[data-theme="dark"] .header .navmenu .active:focus { color: #b42336; }
+html[data-theme="dark"] .header .language-switch { background: #f1f4f8; border-color: #d7dfe9; }
+html[data-theme="dark"] .header .language-switch button { color: #263247; }
+html[data-theme="dark"] .header .language-switch button.active { background: #b42336; color: #ffffff; }
+html[data-theme="dark"] .navmenu ul { background: #ffffff; }
+
+/* Keep the three course program panels uniform while allowing their text to wrap. */
+#services .features-item {
+  height: 390px;
+  min-height: 390px;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid #344965;
+  border-radius: 1.25rem;
+  background: #14233a;
+  color: #f2f5fb;
+}
+#services .features-item > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#services .features-item h3 { color: #ff8793; }
+#services .features-item p,
+#services .features-item li { color: #f2f5fb; }
+#services .features-item img { width: 100%; max-height: 300px; object-fit: contain; }
+#services .features-item ul { margin-bottom: 0; }
+
+/* Stats cards stretch to the same height, including the longer last label. */
+.stats .row > [class*="col-"] {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch !important;
+}
+.stats .stats-item {
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #344965;
+  border-radius: 1rem;
+  background: #14233a;
+  color: #ffffff;
+}
+.stats .stats-item span { color: #ff8793; }
+.stats .stats-item p { max-width: 20ch; color: #ffffff; }
+.stats > .container { color: #ffffff; }
+
+/* Footer contact, social links, legal links, and embedded map. */
+.footer.dark-background {
+  --background-color: #2d3541;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  background: #2d3541;
+  color: #ffffff;
+}
+.footer h4,
+.footer .footer-about .logo span,
+.footer .footer-contact p,
+.footer .footer-contact strong,
+.footer .footer-social-title,
+.footer .copyright p,
+.footer .credits { color: #ffffff; }
+.footer .footer-links ul a,
+.footer .footer-contact a { color: #ffffff; }
+.footer .footer-links ul a:hover,
+.footer .footer-contact a:hover { color: #ff8793; }
+.footer .social-links { gap: .6rem; }
+.footer .social-links a {
+  margin: 0;
+  border-color: rgb(255 255 255 / 60%);
+  color: #ffffff;
+}
+.footer .social-links a:hover { border-color: #ff8793; color: #ff8793; }
+.footer-social-title { margin: 1rem 0 .6rem; font-weight: 700; }
+.footer-map-column h4 { margin-bottom: .9rem; }
+.footer-map {
+  display: block;
+  width: 100%;
+  height: 230px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 1rem;
+  background: #ffffff;
+}
+.footer .copyright { border-top-color: rgb(255 255 255 / 20%); }
+
+/* The chat stays fully inside the viewport and closes from outside clicks. */
+.cwc-chat-panel {
+  right: 6.5rem;
+  width: min(390px, calc(100vw - 8rem));
+  height: min(680px, calc(100dvh - 2rem));
+  max-height: calc(100dvh - 2rem);
+}
+.cwc-chat-messages { min-height: 0; }
+@media (max-width: 767px) {
+  #services .features-item { height: auto; min-height: 0; }
+}
+@media (max-width: 575px) {
+  .cwc-chat-panel {
+    top: 50%;
+    right: .65rem;
+    width: calc(100vw - 1.3rem);
+    height: min(680px, calc(100dvh - 1.3rem));
+    max-height: calc(100dvh - 1.3rem);
+    transform: translateY(-50%);
+  }
+  .footer-map { height: 210px; }
+}

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import emailjs from 'emailjs-com';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,6 @@ import { environment } from '../environments/environment';
   })
 export class AppComponent {
   language: 'es' | 'en' = 'es';
-  theme: 'light' | 'dark' = 'light';
   chatOpen = false;
   chatInput = '';
   chatMessages: { role: 'assistant' | 'user'; text: string }[] = [];
@@ -101,10 +100,8 @@ export class AppComponent {
     try {
       const savedLanguage = localStorage.getItem('cwc-language');
       this.language = savedLanguage === 'en' ? 'en' : 'es';
-      const savedTheme = localStorage.getItem('cwc-theme');
-      this.theme = savedTheme === 'dark' ? 'dark' : 'light';
       document.documentElement.lang = this.language;
-      document.documentElement.dataset['theme'] = this.theme;
+      document.documentElement.dataset['theme'] = 'dark';
       this.setLanguage(this.language);
       const savedChoice = localStorage.getItem('cwc-cookie-choice');
       if (savedChoice === 'accepted' || savedChoice === 'rejected') {
@@ -136,12 +133,6 @@ export class AppComponent {
       : 'Cross Way Center | English Academy in Tuluá');
     document.querySelector('meta[property="og:description"]')?.setAttribute('content', description);
     try { localStorage.setItem('cwc-language', language); } catch { /* preference remains active for this visit */ }
-  }
-
-  toggleTheme(): void {
-    this.theme = this.theme === 'light' ? 'dark' : 'light';
-    document.documentElement.dataset['theme'] = this.theme;
-    try { localStorage.setItem('cwc-theme', this.theme); } catch { /* preference remains active for this visit */ }
   }
 
   toggleChat(): void {
@@ -179,6 +170,14 @@ export class AppComponent {
 
   closeChatOnEscape(event: KeyboardEvent): void {
     if (event.key === 'Escape') this.chatOpen = false;
+  }
+
+  @HostListener('document:click', ['$event'])
+  closeChatOnOutsideClick(event: MouseEvent): void {
+    if (!this.chatOpen) return;
+    const target = event.target;
+    if (target instanceof Element && (target.closest('.cwc-chat-panel') || target.closest('.cwc-chat-launcher'))) return;
+    this.chatOpen = false;
   }
 
   toggleFAQ(item: any) {
