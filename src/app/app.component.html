@@ -15,19 +15,30 @@
       <h3 class="sitename">Academia CWC</h3>
       </a>
 
+      <div class="site-controls" aria-label="Site settings">
+        <div class="language-switch" role="group" [attr.aria-label]="t('Idioma', 'Language')">
+          <button type="button" (click)="setLanguage('es')" [class.active]="language === 'es'" [attr.aria-pressed]="language === 'es'">ES</button>
+          <button type="button" (click)="setLanguage('en')" [class.active]="language === 'en'" [attr.aria-pressed]="language === 'en'">EN</button>
+        </div>
+        <button type="button" class="theme-switch" (click)="toggleTheme()" [attr.aria-label]="theme === 'light' ? t('Activar tema oscuro', 'Switch to dark theme') : t('Activar tema claro', 'Switch to light theme')">
+          <i [class]="theme === 'light' ? 'bi bi-moon-stars' : 'bi bi-sun'" aria-hidden="true"></i>
+          <span>{{ theme === 'light' ? t('Oscuro', 'Dark') : t('Claro', 'Light') }}</span>
+        </button>
+      </div>
+
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#hero">Inicio</a></li>
-          <li><a href="#about">Acerca de</a></li>
-          <li><a href="#services">Servicios</a></li>
-          <li><a href="#gallery">Galería</a></li>
-          <li><a href="#testimonials">Testimonios</a></li>
-          <li><a href="#team">Team</a></li>
+          <li><a href="#hero">{{ t('Inicio', 'Home') }}</a></li>
+          <li><a href="#about">{{ t('Acerca de', 'About') }}</a></li>
+          <li><a href="#services">{{ t('Servicios', 'Courses') }}</a></li>
+          <li><a href="#gallery">{{ t('Galería', 'Gallery') }}</a></li>
+          <li><a href="#testimonials">{{ t('Testimonios', 'Testimonials') }}</a></li>
+          <li><a href="#team">{{ t('Equipo', 'Team') }}</a></li>
           <li><a href="#faq">FAQ</a></li>
-            <li><a href="/legal/aviso-legal.html">Aviso legal</a></li>
-            <li><a href="/legal/politica-privacidad.html">Privacidad</a></li>
-            <li><a href="/legal/aviso-cookies.html">Cookies</a></li>
-          <li><a href="#contact">Contacto</a></li>
+          <li><a [href]="language === 'es' ? '/legal/aviso-legal.html' : '/legal/legal-notice.html'">{{ t('Aviso legal', 'Legal notice') }}</a></li>
+          <li><a [href]="language === 'es' ? '/legal/politica-privacidad.html' : '/legal/privacy-policy.html'">{{ t('Privacidad', 'Privacy') }}</a></li>
+          <li><a [href]="language === 'es' ? '/legal/aviso-cookies.html' : '/legal/cookie-notice.html'">{{ t('Cookies', 'Cookies') }}</a></li>
+          <li><a href="#contact">{{ t('Contacto', 'Contact') }}</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -39,7 +50,7 @@
 
     <!-- Home Section -->
     <section id="hero" class="hero section dark-background">
-      <img src="assets/img/hero-bg-2.jpg" alt="" aria-hidden="true" class="hero-bg" fetchpriority="high">
+      <img src="assets/img/optimized/hero-bg-2.jpg" alt="" aria-hidden="true" class="hero-bg" fetchpriority="high" decoding="async">
 
       <div class="container">
         <div class="row gy-4 justify-content-between">
@@ -48,12 +59,13 @@
           </div>
 
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
-            <h1>Bienvenido a </h1>
+            <h1>{{ t('Bienvenido a', 'Welcome to') }}</h1>
             <h1><span>Cross Way Center</span></h1>
-            <h2>Fundada en 1986.</h2>
+            <h2>{{ t('40 años de experiencia enseñando inglés', '40 years of English teaching experience') }}</h2>
+            <p class="hero-founded">{{ t('Fundada en Tuluá en 1986 · Aprendizaje para cada etapa de la vida', 'Founded in Tuluá in 1986 · English learning for every stage of life') }}</p>
             <div class="d-flex">
               <a href="https://wa.me/573173798422?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" class="btn-get-started" target="_blank" rel="noopener noreferrer">
-                <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Hablar por WhatsApp
+                <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>{{ t('Hablar por WhatsApp', 'Chat on WhatsApp') }}
               </a>
             </div>
           </div>
@@ -89,7 +101,7 @@
             <i class="bi bi-emoji-smile"></i>
             <div class="stats-item">
               <span data-purecounter-start="0" data-purecounter-end="800" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Estudiantes Satisfechos</p>
+              <p>{{ t('Estudiantes satisfechos', 'Happy students') }}</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -97,7 +109,7 @@
             <i class="bi bi-journal-richtext"></i>
             <div class="stats-item">
               <span data-purecounter-start="0" data-purecounter-end="3" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Ofertas Académicas</p>
+              <p>{{ t('Programas académicos', 'Academic programs') }}</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -105,7 +117,7 @@
             <i class="bi bi-headset"></i>
             <div class="stats-item">
               <span data-purecounter-start="0" data-purecounter-end="40" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Años de Experiencia</p>
+              <p>{{ t('Años de experiencia', 'Years of experience') }}</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -113,7 +125,7 @@
             <i class="bi bi-people"></i>
             <div class="stats-item">
               <span data-purecounter-start="0" data-purecounter-end="375" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Horas de Estudio Aproximadas al Año</p>
+              <p>{{ t('Horas de estudio aproximadas al año', 'Approximate study hours per year') }}</p>
             </div>
           </div><!-- End Stats Item -->
 
@@ -130,10 +142,10 @@
         <div class="row align-items-xl-center gy-5">
 
           <div class="col-xl-5 content">
-            <h3>Sobre nosotros</h3>
+            <h3>{{ t('Sobre nosotros', 'About us') }}</h3>
             <h2>Cross Way Center</h2>
-            <p> Desde su fundación en 1986, Cross Way Center ha sido un pilar en la enseñanza del idioma inglés en Tuluá, Valle. Con licencia de funcionamiento 310-59.1104 emitida por la Secretaría de Educación, nuestra academia se dedica a proporcionar una educación de calidad que capacita a nuestros estudiantes en un idioma globalmente esencial. ¡Te invitamos a formar parte de nuestra comunidad educativa y a iniciar tu viaje hacia el dominio del inglés con nosotros!</p>
-            <a href="#contact" class="read-more"><span>Saber más</span><i class="bi bi-arrow-right"></i></a>
+            <p>{{ t('Desde su fundación en 1986, Cross Way Center ha sido un pilar en la enseñanza del idioma inglés en Tuluá, Valle. Con licencia de funcionamiento 310-59.1104 emitida por la Secretaría de Educación, nuestra academia se dedica a proporcionar una educación de calidad que capacita a nuestros estudiantes en un idioma globalmente esencial. ¡Te invitamos a formar parte de nuestra comunidad educativa y a iniciar tu viaje hacia el dominio del inglés con nosotros!', 'Since its founding in 1986, Cross Way Center has helped shape English language education in Tuluá, Valle del Cauca. Licensed by the Secretary of Education (310-59.1104), our academy is dedicated to high-quality learning that prepares students to use English in a global world. Join our community and begin your journey toward English fluency with us.') }}</p>
+            <a href="#contact" class="read-more"><span>{{ t('Saber más', 'Learn more') }}</span><i class="bi bi-arrow-right"></i></a>
           </div>
 
           <div class="col-xl-7">
@@ -142,32 +154,32 @@
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="icon-box">
                   <i class="bi bi-buildings"></i>
-                  <h3>Misión</h3>
-                  <p>Nuestra misión es brindar a los estudiantes las herramientas para un óptimo aprendizaje del inglés, aplicando las cuatro habilidades básicas: hablar, escuchar, leer y escribir en diversos contextos de la vida cotidiana.</p>
+            <h3>{{ t('Misión', 'Our mission') }}</h3>
+            <p>{{ t('Nuestra misión es brindar a los estudiantes las herramientas para un óptimo aprendizaje del inglés, aplicando las cuatro habilidades básicas: hablar, escuchar, leer y escribir en diversos contextos de la vida cotidiana.', 'Our mission is to give students the tools for effective English learning through the four core skills: speaking, listening, reading, and writing in everyday contexts.') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                 <div class="icon-box">
                   <i class="bi bi-clipboard-pulse"></i>
-                  <h3>Visión</h3>
-                  <p>En el año 2030, nuestra institución ofrecerá enseñanza de inglés de alta calidad, posicionándose entre las mejores del Valle del Cauca, con modalidad presencial y virtual en distintas regiones de Colombia.</p>
+            <h3>{{ t('Visión', 'Our vision') }}</h3>
+            <p>{{ t('En el año 2030, nuestra institución ofrecerá enseñanza de inglés de alta calidad, posicionándose entre las mejores del Valle del Cauca, con modalidad presencial y virtual en distintas regiones de Colombia.', 'By 2030, our institution aims to offer high-quality English instruction and be among the leading academies in Valle del Cauca, with in-person and online learning available across Colombia.') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                 <div class="icon-box">
                   <i class="bi bi-command"></i>
-                  <h3>Política de Calidad</h3>
-                  <p>El Instituto de Formación para el Trabajo Cross Way Center tiene como objetivo enseñar inglés en el ámbito escolar, universitario y social, brindando a los estudiantes conocimientos lingüísticos clave para su desarrollo personal, académico y profesional. Se enfoca en satisfacer sus necesidades mediante la mejora continua del Sistema de Gestión de Calidad, fundamentado en los valores de su misión y visión y en las normas NTC 5555 y 5580.</p>
+            <h3>{{ t('Política de calidad', 'Quality policy') }}</h3>
+            <p>{{ t('El Instituto de Formación para el Trabajo Cross Way Center tiene como objetivo enseñar inglés en el ámbito escolar, universitario y social, brindando a los estudiantes conocimientos lingüísticos clave para su desarrollo personal, académico y profesional. Se enfoca en satisfacer sus necesidades mediante la mejora continua del Sistema de Gestión de Calidad, fundamentado en los valores de su misión y visión y en las normas NTC 5555 y 5580.', 'Cross Way Center provides English training for school, university, and social settings, giving learners language skills for personal, academic, and professional growth. We focus on meeting student needs through continuous improvement of our quality management system, guided by our mission, vision, and standards NTC 5555 and 5580.') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
               <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
                 <div class="icon-box">
                   <i class="bi bi-graph-up-arrow"></i>
-                  <h3>Objetivos de Calidad</h3>
-                  <p>Diseñar, ejecutar y evaluar planes de formación que promuevan el crecimiento integral de la comunidad educativa, fortaleciendo las competencias comunicativas en inglés. Consolidar procesos administrativos y optimizar recursos para la sostenibilidad económica, asegurando la continuidad de los procesos educativos y el crecimiento institucional. Mantener y mejorar continuamente el Sistema de Calidad, orientando las acciones pedagógicas hacia altos niveles de calidad educativa para el desarrollo de los estudiantes y la transformación del entorno local, regional y nacional.</p>
+            <h3>{{ t('Objetivos de calidad', 'Quality objectives') }}</h3>
+            <p>{{ t('Diseñar, ejecutar y evaluar planes de formación que promuevan el crecimiento integral de la comunidad educativa, fortaleciendo las competencias comunicativas en inglés. Consolidar procesos administrativos y optimizar recursos para la sostenibilidad económica, asegurando la continuidad de los procesos educativos y el crecimiento institucional. Mantener y mejorar continuamente el Sistema de Calidad, orientando las acciones pedagógicas hacia altos niveles de calidad educativa para el desarrollo de los estudiantes y la transformación del entorno local, regional y nacional.', 'We design, deliver, and evaluate learning plans that support the growth of our educational community and strengthen English communication skills. We also improve administrative processes and resource use to support sustainable operations and continuity. We continually improve our quality system and guide teaching toward strong educational outcomes for students and the wider community.') }}</p>
                 </div>
               </div> <!-- End Icon Box -->
 
@@ -186,8 +198,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Servicios</h2>
-        <div><span></span> <span class="description-title">Servicios y Detalles</span></div>
+            <h2>{{ t('Cursos', 'Courses') }}</h2>
+            <div><span></span> <span class="description-title">{{ t('Programas para cada nivel', 'Programs for every level') }}</span></div>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -197,14 +209,14 @@
             <img src="assets/img/details-1.png" class="img-fluid" alt="Ilustración de los cursos de inglés de Cross Way Center" loading="lazy" decoding="async">
           </div>
           <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
-            <h3>Curso de inglés para niños (Kids)</h3>
+              <h3>{{ t('Curso de inglés para niños (Kids)', 'English for children (Kids)') }}</h3>
             <p class="fst-italic">
               Orientado a estudiantes jóvenes para introducirlos al inglés de forma divertida y efectiva.
             </p>
             <ul>
-              <li><i class="bi bi-check"></i><span>Consta de 6 niveles que llevan a un nivel A1-A2 del MCER.</span></li>
-              <li><i class="bi bi-check"></i><span>Desarrollo de las cuatro habilidades: hablar, escuchar, leer y escribir.</span></li>
-              <li><i class="bi bi-check"></i><span>Actividades lúdicas y educativas que fomentan el interés y la motivación.</span></li>
+              <li><i class="bi bi-check"></i><span>{{ t('Consta de 6 niveles que llevan a un nivel A1-A2 del MCER.', 'Six levels that build toward CEFR A1–A2.') }}</span></li>
+              <li><i class="bi bi-check"></i><span>{{ t('Desarrollo de las cuatro habilidades: hablar, escuchar, leer y escribir.', 'Practice in all four skills: speaking, listening, reading, and writing.') }}</span></li>
+              <li><i class="bi bi-check"></i><span>{{ t('Actividades lúdicas y educativas que fomentan el interés y la motivación.', 'Engaging educational activities that encourage curiosity and motivation.') }}</span></li>
             </ul>
           </div>
         </div><!-- Features Item -->
@@ -214,14 +226,14 @@
             <img src="assets/img/details-2.png" class="img-fluid" alt="Ilustración del método de aprendizaje de inglés" loading="lazy" decoding="async">
           </div>
           <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
-            <h3>Programa Basico para Adultos</h3>
+              <h3>{{ t('Programa Básico para Adultos', 'Adult beginner program') }}</h3>
             <p class="fst-italic">
                 Diseñado para adultos que inician su aprendizaje de inglés o buscan mejorar sus habilidades desde un nivel principiante.
               </p>
               <ul>
-                <li><i class="bi bi-check"></i><span>Programa con 12 niveles, desde A1 hasta B1 del MCER.</span></li>
-                <li><i class="bi bi-check"></i><span>Desarrollo de competencias para comunicarse en situaciones cotidianas y profesionales.</span></li>
-                <li><i class="bi bi-check"></i><span>Estructura gradual y sistemática para consolidar conocimientos y avanzar con confianza.</span></li>
+              <li><i class="bi bi-check"></i><span>{{ t('Programa con 12 niveles, desde A1 hasta B1 del MCER.', 'A 12-level program from CEFR A1 to B1.') }}</span></li>
+              <li><i class="bi bi-check"></i><span>{{ t('Desarrollo de competencias para comunicarse en situaciones cotidianas y profesionales.', 'Build the skills to communicate in everyday and professional situations.') }}</span></li>
+              <li><i class="bi bi-check"></i><span>{{ t('Estructura gradual y sistemática para consolidar conocimientos y avanzar con confianza.', 'A gradual, structured approach to strengthen your skills and progress with confidence.') }}</span></li>
               </ul>
           </div>
         </div><!-- Features Item -->
@@ -231,13 +243,13 @@
             <img src="assets/img/details-3.png" class="img-fluid" alt="Estudiantes practicando inglés en clase" loading="lazy" decoding="async">
           </div>
           <div class="col-md-7" data-aos="fade-up">
-            <h3>Curso Avanzado para Adultos</h3>
-           <p>Para estudiantes con una base sólida que desean perfeccionar sus habilidades y lograr un dominio avanzado del inglés.
+              <h3>{{ t('Curso Avanzado para Adultos', 'Advanced English for adults') }}</h3>
+             <p>{{ t('Para estudiantes con una base sólida que desean perfeccionar sus habilidades y lograr un dominio avanzado del inglés.', 'For learners with a strong foundation who want to refine their skills and reach an advanced level of English.') }}
           </p>
           <ul>
-            <li><i class="bi bi-check"></i><span>Curso de 8 niveles, alcanzando niveles B2 o C1 del MCER.</span></li>
-            <li><i class="bi bi-check"></i><span>Enfoque en el uso avanzado del idioma en contextos académicos, laborales y sociales.</span></li>
-            <li><i class="bi bi-check"></i><span>Énfasis en fluidez, precisión gramatical y capacidad para debatir temas complejos.</span></li>
+            <li><i class="bi bi-check"></i><span>{{ t('Curso de 8 niveles, alcanzando niveles B2 o C1 del MCER.', 'Eight levels that build toward CEFR B2 or C1.') }}</span></li>
+            <li><i class="bi bi-check"></i><span>{{ t('Enfoque en el uso avanzado del idioma en contextos académicos, laborales y sociales.', 'Advanced English for academic, professional, and social settings.') }}</span></li>
+            <li><i class="bi bi-check"></i><span>{{ t('Énfasis en fluidez, precisión gramatical y capacidad para debatir temas complejos.', 'Focus on fluency, grammatical accuracy, and discussing complex topics.') }}</span></li>
           </ul>
           </div>
         </div><!-- Features Item -->
@@ -250,8 +262,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Galería</h2>
-        <div><span></span> <span class="description-title"> Galería de Fotos</span></div>
+        <h2>{{ t('Galería', 'Gallery') }}</h2>
+        <div><span></span> <span class="description-title">{{ t('Momentos en Cross Way Center', 'Moments at Cross Way Center') }}</span></div>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -261,7 +273,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/in-class-1.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/in-class-1.jpeg" alt="Estudiantes participando en una clase de inglés" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
+                <img src="assets/img/optimized/in-class-1.jpeg" alt="Estudiantes participando en una clase de inglés" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -269,7 +281,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/in-class-2.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/in-class-2.jpeg" alt="Grupo practicando inglés en el aula" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
+                <img src="assets/img/optimized/in-class-2.jpeg" alt="Grupo practicando inglés en el aula" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -277,7 +289,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/teacher-jp1.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/teacher-jp1.jpeg" alt="Docente de Cross Way Center guiando una clase" width="300" height="200" class="img-fluid">
+                <img src="assets/img/optimized/teacher-jp1.jpeg" alt="Docente de Cross Way Center guiando una clase" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -285,7 +297,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/student1.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/student1.jpeg" alt="Estudiante de inglés en Cross Way Center" width="300" height="200" class="img-fluid">
+                <img src="assets/img/optimized/student1.jpeg" alt="Estudiante de inglés en Cross Way Center" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -293,7 +305,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/jp-new.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/jp-new.jpeg" alt="Estudiantes y docentes de Cross Way Center" width="300" height="200" class="img-fluid">
+                <img src="assets/img/optimized/jp-new.jpeg" alt="Estudiantes y docentes de Cross Way Center" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -301,7 +313,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/kids.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/kids.jpeg" alt="Niños participando en una actividad de inglés" width="300" height="200" class="img-fluid">
+                <img src="assets/img/optimized/kids.jpeg" alt="Niños participando en una actividad de inglés" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -309,15 +321,15 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/teacher-juanc.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/teacher-juanc.jpeg" alt="Profesor de inglés en una sesión académica" width="300" height="200" class="img-fluid">
+                <img src="assets/img/optimized/teacher-juanc.jpeg" alt="Profesor de inglés en una sesión académica" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
 
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
-              <a href="assets/img/cross-way-images/jd2.jpeg " class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/jd2.jpeg" alt="Actividad de aprendizaje en Cross Way Center"  width="300" height="200"class="img-fluid">
+              <a href="assets/img/cross-way-images/jd2.jpeg" class="glightbox" data-gallery="images-gallery">
+                <img src="assets/img/optimized/jd2.jpeg" alt="Actividad de aprendizaje en Cross Way Center" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -331,28 +343,30 @@
    <!-- Testimonials Section -->
    <section id="testimonials" class="testimonials section">
     <div class="container section-title" data-aos="fade-up">
-      <h2>Testimonios</h2>
-      <div><span></span> <span class="description-title"> ¿Qué dicen de nosotros? </span></div>
+      <h2>{{ t('Testimonios', 'Testimonials') }}</h2>
+      <div><span></span> <span class="description-title">{{ t('Historias de nuestra comunidad', 'Stories from our community') }}</span></div>
     </div><!-- End Section Title -->
     <div class="container">
       <div class="row g-4 testimonial-grid">
         <div class="col-12 col-lg-6" *ngFor="let testimonial of testimonials; let i = index">
           <article class="testimonial-card h-100">
             <div class="testimonial-person">
-              <img [src]="testimonial.img" class="testimonial-img" [alt]="'Foto de ' + testimonial.name"
+              <img *ngIf="testimonial.img; else testimonialInitials" [src]="testimonial.img" class="testimonial-img" [alt]="t('Foto de ', 'Photo of ') + testimonial.name"
                 width="72" height="72" loading="lazy" decoding="async">
+              <ng-template #testimonialInitials><div class="testimonial-img testimonial-avatar" aria-hidden="true">{{ testimonial.name.slice(0, 1) }}</div></ng-template>
               <div class="testimonial-content">
                 <h3>{{ testimonial.name }}</h3>
-                <h4>{{ testimonial.title }}</h4>
-                <div class="testimonial-rating" aria-label="Valoración: cinco de cinco estrellas">★★★★★</div>
+                <h4>{{ language === 'es' ? testimonial.title : testimonialTitlesEn[i] }}</h4>
+                <div class="testimonial-rating" [attr.aria-label]="t('Valoración: cinco de cinco estrellas', 'Rating: five out of five stars')">★★★★★</div>
               </div>
             </div>
             <blockquote class="testimonial-review" [class.is-expanded]="testimonialExpanded[i]">
-              “{{ testimonial.review }}”
+              “{{ language === 'es' ? testimonial.review : testimonialsEn[i] }}”
             </blockquote>
+            <p *ngIf="language === 'en'" class="testimonial-translation-note">{{ t('Traducción del testimonio original en español.', 'Translated from the original Spanish testimonial.') }}</p>
             <button type="button" class="testimonial-toggle" (click)="toggleTestimonial(i)"
               [attr.aria-expanded]="!!testimonialExpanded[i]">
-              {{ testimonialExpanded[i] ? 'Leer menos' : 'Leer testimonio completo' }}
+              {{ testimonialExpanded[i] ? t('Leer menos', 'Read less') : t('Leer testimonio completo', 'Read full testimonial') }}
             </button>
           </article>
         </div>
@@ -369,8 +383,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Equipo</h2>
-        <div><span>Nuestro</span> <span class="description-title"> Equipo</span></div>
+        <h2>{{ t('Equipo', 'Team') }}</h2>
+        <div><span>{{ t('Conoce a nuestro', 'Meet our') }}</span> <span class="description-title">{{ t('equipo', 'team') }}</span></div>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -379,10 +393,10 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
-              <div class="pic"><img src="assets/img/cross-way-images/principal.jpeg" class="img-fluid" alt="Juan Pablo Cuero, director de Cross Way Center" loading="lazy" decoding="async"></div>
+              <div class="pic"><img src="assets/img/optimized/principal.jpeg" class="img-fluid" alt="Juan Pablo Cuero, director de Cross Way Center" loading="lazy" decoding="async"></div>
               <div class="member-info">
                 <h4>Juan Pablo Cuero</h4>
-                <span>Director</span>
+                <span>{{ t('Director', 'Director') }}</span>
                 <div class="social">
                   <a href="https://www.facebook.com/CrossWayCenter.Co" aria-label="Facebook de Cross Way Center" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
                   <a href="https://www.instagram.com/cross_way_center?igsh=MTI0d3Zjdzk5MjNhNQ==" aria-label="Instagram de Cross Way Center" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram" aria-hidden="true"></i></a>
@@ -393,10 +407,10 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
-              <div class="pic"><img src="assets/img/cross-way-images/teacher-l.jpeg" class="img-fluid" alt="Docente de inglés de Cross Way Center" loading="lazy" decoding="async"></div>
+              <div class="pic"><img src="assets/img/optimized/teacher-l.jpeg" class="img-fluid" alt="Docente de inglés de Cross Way Center" loading="lazy" decoding="async"></div>
               <div class="member-info">
                 <h4>Luis Alberto Gallego</h4>
-                <span>Coordinador Académico</span>
+                <span>{{ t('Coordinador Académico', 'Academic Coordinator') }}</span>
                 <div class="social">
                   <a href="https://www.facebook.com/CrossWayCenter.Co"><i class="bi bi-facebook"></i></a>
                   <a href="https://www.instagram.com/cross_way_center?igsh=MTI0d3Zjdzk5MjNhNQ=="><i class="bi bi-instagram"></i></a>
@@ -408,10 +422,10 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
-              <div class="pic"><img src="assets/img/cross-way-images/sandra-near.jpeg" class="img-fluid" alt="Docente Sandra de Cross Way Center" loading="lazy" decoding="async"></div>
+              <div class="pic"><img src="assets/img/optimized/sandra-near.jpeg" class="img-fluid" alt="Docente Sandra de Cross Way Center" loading="lazy" decoding="async"></div>
               <div class="member-info">
                 <h4>Sandra Monroe</h4>
-                <span>Secretaria</span>
+                <span>{{ t('Secretaria', 'Administrator') }}</span>
                 <div class="social">
                   <a href="https://www.facebook.com/CrossWayCenter.Co"><i class="bi bi-facebook"></i></a>
                   <a href="https://www.instagram.com/cross_way_center?igsh=MTI0d3Zjdzk5MjNhNQ=="><i class="bi bi-instagram"></i></a>
@@ -436,9 +450,9 @@
       <div class="col-lg-7 d-flex flex-column justify-content-center order-2 order-lg-1">
 
         <div class="content px-xl-5" data-aos="fade-up" data-aos-delay="100">
-          <h3><span>Preguntas Frecuentes </span><strong>(FAQ)</strong></h3>
+          <h3><span>{{ t('Preguntas frecuentes', 'Frequently asked questions') }} </span><strong>(FAQ)</strong></h3>
           <p>
-            Aquí respondemos algunas de las preguntas más comunes sobre nuestros cursos y servicios en Cross Way Center. Si tienes alguna otra consulta, no dudes en contactarnos.
+            {{ t('Aquí respondemos algunas de las preguntas más comunes sobre nuestros cursos y servicios en Cross Way Center. Si tienes alguna otra consulta, no dudes en contactarnos.', 'Find answers to common questions about Cross Way Center courses and services. If you need more information, please contact our team.') }}
           </p>
         </div>
 
@@ -446,9 +460,9 @@
 
           <div *ngFor="let item of faqs" class="faq-item" [ngClass]="{'faq-active': item.active}">
             <i class="faq-icon bi bi-question-circle"></i>
-            <h3 (click)="toggleFAQ(item)">{{ item.question }}</h3>
+            <h3 (click)="toggleFAQ(item)">{{ language === 'es' ? item.question : item.questionEn }}</h3>
             <div class="faq-content" *ngIf="item.active">
-              <p>{{ item.answer }}</p>
+              <p>{{ language === 'es' ? item.answer : item.answerEn }}</p>
             </div>
             <i class="faq-toggle bi bi-chevron-right" (click)="toggleFAQ(item)"></i>
           </div><!-- End Faq item-->
@@ -458,7 +472,7 @@
       </div>
 
       <div class="col-lg-5 order-1 order-lg-2">
-        <img src="assets/img/faq.jpg" class="img-fluid" alt="Estudiantes de Cross Way Center aprendiendo inglés" loading="lazy" decoding="async" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/img/optimized/faq.jpg" class="img-fluid" alt="Estudiantes de Cross Way Center aprendiendo inglés" loading="lazy" decoding="async" data-aos="zoom-in" data-aos-delay="100">
       </div>
     </div>
 
@@ -471,8 +485,8 @@
 <section id="contact" class="contact section">
   <!-- Section Title -->
   <div class="container section-title" data-aos="fade-up">
-    <h2>Contacto</h2>
-    <div><span></span> <span class="description-title"> Contáctanos</span></div>
+        <h2>{{ t('Contacto', 'Contact') }}</h2>
+        <div><span></span> <span class="description-title">{{ t('Hablemos de tu próximo paso', 'Let’s talk about your next step') }}</span></div>
   </div><!-- End Section Title -->
 
   <div class="container" data-aos="fade" data-aos-delay="100">
@@ -481,7 +495,7 @@
         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
           <i class="bi bi-geo-alt flex-shrink-0"></i>
           <div>
-            <h3>Dirección</h3>
+            <h3>{{ t('Dirección', 'Address') }}</h3>
             <p>Calle 34 #20-41, Sajonia, TLÁ - Valle del Cauca</p>
           </div>
         </div><!-- End Info Item -->
@@ -489,7 +503,7 @@
         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
           <i class="bi bi-telephone flex-shrink-0"></i>
           <div>
-            <h3>Llámanos</h3>
+            <h3>{{ t('Llámanos', 'Call us') }}</h3>
             <p>+57 317 379 8422</p>
           </div>
         </div><!-- End Info Item -->
@@ -497,7 +511,7 @@
         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
           <i class="bi bi-envelope flex-shrink-0"></i>
           <div>
-            <h3>Envíanos un Correo</h3>
+            <h3>{{ t('Envíanos un correo', 'Email us') }}</h3>
             <p>crosswaycentertulua&#64;gmail.com</p>
           </div>
         </div><!-- End Info Item -->
@@ -511,34 +525,34 @@
           </div>
           <div class="row gy-4">
             <div class="col-md-6">
-              <label class="visually-hidden" for="contact-name">Nombre completo</label>
-              <input id="contact-name" type="text" class="form-control" placeholder="Nombre completo" aria-label="Nombre completo" [(ngModel)]="contactForm.nombre" name="nombre" maxlength="100" required>
+          <label class="visually-hidden" for="contact-name">{{ t('Nombre completo', 'Full name') }}</label>
+          <input id="contact-name" type="text" class="form-control" [placeholder]="t('Nombre completo', 'Full name')" [attr.aria-label]="t('Nombre completo', 'Full name')" [(ngModel)]="contactForm.nombre" name="nombre" maxlength="100" required>
             </div>
             <div class="col-md-6">
-              <label class="visually-hidden" for="contact-email">Correo electrónico</label>
-              <input id="contact-email" type="email" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico" [(ngModel)]="contactForm.email" name="email" maxlength="150" required>
+          <label class="visually-hidden" for="contact-email">{{ t('Correo electrónico', 'Email address') }}</label>
+          <input id="contact-email" type="email" class="form-control" [placeholder]="t('Correo electrónico', 'Email address')" [attr.aria-label]="t('Correo electrónico', 'Email address')" [(ngModel)]="contactForm.email" name="email" maxlength="150" required>
             </div>
             <div class="col-md-12">
-              <label class="visually-hidden" for="contact-subject">Asunto</label>
-              <input id="contact-subject" type="text" class="form-control" placeholder="Asunto" aria-label="Asunto" [(ngModel)]="contactForm.asunto" name="asunto" maxlength="120" required>
+          <label class="visually-hidden" for="contact-subject">{{ t('Asunto', 'Subject') }}</label>
+          <input id="contact-subject" type="text" class="form-control" [placeholder]="t('Asunto', 'Subject')" [attr.aria-label]="t('Asunto', 'Subject')" [(ngModel)]="contactForm.asunto" name="asunto" maxlength="120" required>
             </div>
             <div class="col-md-12">
-              <label class="visually-hidden" for="contact-message">Mensaje</label>
-              <textarea id="contact-message" class="form-control" rows="6" placeholder="Mensaje" aria-label="Mensaje" [(ngModel)]="contactForm.mensaje" name="mensaje" maxlength="3000" required></textarea>
+          <label class="visually-hidden" for="contact-message">{{ t('Mensaje', 'Message') }}</label>
+          <textarea id="contact-message" class="form-control" rows="6" [placeholder]="t('Mensaje', 'Message')" [attr.aria-label]="t('Mensaje', 'Message')" [(ngModel)]="contactForm.mensaje" name="mensaje" maxlength="3000" required></textarea>
             </div>
             <div class="col-md-12">
               <label class="privacy-consent">
                 <input type="checkbox" [(ngModel)]="contactForm.privacyAccepted" name="privacyAccepted" required>
-                <span>Autorizo el tratamiento de mis datos para responder esta consulta. He leído la
-                  <a href="/legal/politica-privacidad.html" target="_blank" rel="noopener noreferrer">Política de privacidad</a>.
+              <span>{{ t('Autorizo el tratamiento de mis datos para responder esta consulta. He leído la', 'I authorize the use of my data to respond to this request. I have read the') }}
+                <a [href]="language === 'es' ? '/legal/politica-privacidad.html' : '/legal/privacy-policy.html'" target="_blank" rel="noopener noreferrer">{{ t('Política de privacidad', 'Privacy Policy') }}</a>.
                 </span>
               </label>
             </div>
             <div class="col-md-12 text-center">
-              <div *ngIf="loading" class="loading" role="status">Enviando...</div>
+            <div *ngIf="loading" class="loading" role="status">{{ t('Enviando…', 'Sending…') }}</div>
               <div *ngIf="successMessage" class="sent-message" role="status">{{ successMessage }}</div>
               <div *ngIf="errorMessage" class="error-message" role="alert">{{ errorMessage }}</div>
-              <button type="submit" [disabled]="loading">Enviar consulta</button>
+            <button type="submit" [disabled]="loading">{{ t('Enviar consulta', 'Send message') }}</button>
             </div>
           </div>
         </form>
@@ -560,9 +574,9 @@
           <div class="footer-contact pt-3">
             <p>Sajonia / Calle 34 #20-41   </p>
             <p>Tuluá - Valle del Cauca, TLÁ 763022</p>
-            <p class="mt-3"><strong>Celular:</strong> <span> +57 317 379 8422</span></p>
-            <p><strong>Email:</strong> <a href="mailto:crosswaycentertulua@gmail.com">crosswaycentertulua@gmail.com</a></p>
-            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Cross+Way+Center%2C+Calle+34+20-41%2C+Tulu%C3%A1" target="_blank" rel="noopener noreferrer">Ver ubicación en Google Maps</a></p>
+            <p class="mt-3"><strong>{{ t('Celular:', 'Phone:') }}</strong> <span> +57 317 379 8422</span></p>
+            <p><strong>{{ t('Correo:', 'Email:') }}</strong> <a href="mailto:crosswaycentertulua&#64;gmail.com">crosswaycentertulua&#64;gmail.com</a></p>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Cross+Way+Center%2C+Calle+34+20-41%2C+Tulu%C3%A1" target="_blank" rel="noopener noreferrer">{{ t('Ver ubicación en Google Maps', 'View on Google Maps') }}</a></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href="https://www.facebook.com/CrossWayCenter.Co"><i class="bi bi-facebook"></i></a>
@@ -571,21 +585,21 @@
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Links</h4>
+          <h4>{{ t('Enlaces', 'Links') }}</h4>
           <ul>
-            <li><a href="#hero">Inicio</a></li>
-            <li><a href="#testimonials">Testimonios</a></li>
-            <li><a href="#services">Servicios</a></li>
-            <li><a href="#about">Acerca de</a></li>
+            <li><a href="#hero">{{ t('Inicio', 'Home') }}</a></li>
+            <li><a href="#testimonials">{{ t('Testimonios', 'Testimonials') }}</a></li>
+            <li><a href="#services">{{ t('Cursos', 'Courses') }}</a></li>
+            <li><a href="#about">{{ t('Acerca de', 'About') }}</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="/legal/aviso-legal.html">Aviso legal</a></li>
-            <li><a href="/legal/politica-privacidad.html">Privacidad</a></li>
-            <li><a href="/legal/aviso-cookies.html">Cookies</a></li>
+            <li><a [href]="language === 'es' ? '/legal/aviso-legal.html' : '/legal/legal-notice.html'">{{ t('Aviso legal', 'Legal notice') }}</a></li>
+            <li><a [href]="language === 'es' ? '/legal/politica-privacidad.html' : '/legal/privacy-policy.html'">{{ t('Privacidad', 'Privacy') }}</a></li>
+            <li><a [href]="language === 'es' ? '/legal/aviso-cookies.html' : '/legal/cookie-notice.html'">{{ t('Cookies', 'Cookies') }}</a></li>
             <li>
               <a
                 href="https://wa.me/573173798422"
                 target="_blank"
-                >Whatsapp</a
+                >WhatsApp</a
               >
             </li>
           </ul>
@@ -595,7 +609,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">Cross Way Center</strong> <span>All Rights Reserved</span></p>
+      <p>© <span>{{ t('Derechos reservados', 'All rights reserved') }}</span> <strong class="px-1 sitename">Cross Way Center</strong></p>
       <div class="credits">
       <a> Designed by Juan D. Cuero
       </a>  
@@ -603,20 +617,47 @@
     </div>
   </footer>
 
-  <div id="google_translate_element" class="translate-control" aria-label="Selector de idioma"></div>
-  <a class="whatsapp-float" href="https://wa.me/573173798422?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Cross Way Center por WhatsApp">
-    <i class="bi bi-whatsapp" aria-hidden="true"></i><span>Escríbenos</span>
+  <a class="whatsapp-float" href="https://wa.me/573173798422?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" target="_blank" rel="noopener noreferrer" [attr.aria-label]="t('Escribir a Cross Way Center por WhatsApp', 'Message Cross Way Center on WhatsApp')">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i><span>{{ t('Escríbenos', 'Message us') }}</span>
   </a>
 
-  <button *ngIf="cookieChoice !== null" class="cookie-settings" type="button" (click)="cookieChoice = null">Configurar cookies</button>
+  <section *ngIf="chatOpen" class="cwc-chat-panel" role="dialog" aria-modal="false" aria-labelledby="chat-title" (keydown)="closeChatOnEscape($event)">
+    <header class="cwc-chat-header">
+      <img src="assets/img/chatbot-assistant.png" alt="" width="44" height="44" decoding="async">
+      <div><h2 id="chat-title">{{ t('Asistente Cross Way', 'Cross Way assistant') }}</h2><p>{{ t('En línea · Orientación sobre nuestros cursos', 'Online · Course information') }}</p></div>
+      <button type="button" class="cwc-chat-close" (click)="toggleChat()" [attr.aria-label]="t('Cerrar chat', 'Close chat')">×</button>
+    </header>
+    <div class="cwc-chat-messages" #chatMessagesView aria-live="polite" aria-relevant="additions text">
+      <article *ngFor="let message of chatMessages" class="cwc-chat-message" [class.is-user]="message.role === 'user'">
+        {{ message.text }}
+      </article>
+    </div>
+    <div class="cwc-chat-prompts" *ngIf="chatMessages.length < 3">
+      <button type="button" (click)="sendChatMessage(t('Cursos', 'Courses'))">{{ t('Cursos', 'Courses') }}</button>
+      <button type="button" (click)="sendChatMessage(t('Horarios', 'Schedules'))">{{ t('Horarios', 'Schedules') }}</button>
+      <button type="button" (click)="sendChatMessage(t('Precios', 'Prices'))">{{ t('Precios', 'Prices') }}</button>
+    </div>
+    <form class="cwc-chat-compose" (ngSubmit)="sendChatMessage()">
+      <label class="visually-hidden" for="chat-message">{{ t('Escribe tu pregunta', 'Type your question') }}</label>
+      <input id="chat-message" name="chatMessage" [(ngModel)]="chatInput" [placeholder]="t('Escribe tu pregunta…', 'Ask a question…')" maxlength="500" autocomplete="off">
+      <button type="submit" [disabled]="!chatInput.trim()" [attr.aria-label]="t('Enviar mensaje', 'Send message')"><i class="bi bi-arrow-up" aria-hidden="true"></i></button>
+    </form>
+    <a class="cwc-chat-human" href="https://wa.me/573173798422?text=Hola%2C%20quiero%20hablar%20con%20el%20equipo%20de%20Cross%20Way%20Center" target="_blank" rel="noopener noreferrer">{{ t('Hablar con nuestro equipo por WhatsApp', 'Talk to our team on WhatsApp') }} <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
+    <p class="cwc-chat-note">{{ t('Asistente virtual para preguntas frecuentes. No recopila datos personales.', 'Virtual assistant for common questions. It does not collect personal data.') }}</p>
+  </section>
+  <button type="button" class="cwc-chat-launcher" (click)="toggleChat()" [attr.aria-expanded]="chatOpen" [attr.aria-label]="chatOpen ? t('Cerrar asistente virtual', 'Close virtual assistant') : t('Abrir asistente virtual', 'Open virtual assistant')">
+    <img src="assets/img/chatbot-assistant.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+  </button>
+
+  <button *ngIf="cookieChoice !== null" class="cookie-settings" type="button" (click)="cookieChoice = null">{{ t('Configurar cookies', 'Cookie settings') }}</button>
   <section *ngIf="cookieChoice === null" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
     <div>
-      <h2 id="cookie-title">Tu privacidad importa</h2>
-      <p id="cookie-description">Usamos solo lo necesario para el sitio. Google Translate y la analítica opcional se cargan si aceptas las cookies opcionales. <a href="/legal/aviso-cookies.html">Lee el aviso de cookies</a>.</p>
+      <h2 id="cookie-title">{{ t('Tu privacidad importa', 'Your privacy matters') }}</h2>
+      <p id="cookie-description">{{ t('Usamos solo las cookies necesarias para el sitio. La analítica opcional se activa si aceptas las cookies opcionales.', 'We use only essential cookies for the site. Optional analytics runs only if you accept optional cookies.') }} <a [href]="language === 'es' ? '/legal/aviso-cookies.html' : '/legal/cookie-notice.html'">{{ t('Lee el aviso de cookies', 'Read our cookie notice') }}</a>.</p>
     </div>
     <div class="cookie-actions">
-      <button type="button" class="cookie-reject" (click)="chooseCookies(false)">Solo necesarias</button>
-      <button type="button" class="cookie-accept" (click)="chooseCookies(true)">Aceptar opcionales</button>
+      <button type="button" class="cookie-reject" (click)="chooseCookies(false)">{{ t('Solo necesarias', 'Essential only') }}</button>
+      <button type="button" class="cookie-accept" (click)="chooseCookies(true)">{{ t('Aceptar opcionales', 'Accept optional') }}</button>
     </div>
   </section>
 
