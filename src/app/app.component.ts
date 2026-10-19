@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import emailjs from 'emailjs-com';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../environments/environment';
  
 
 @Component({
@@ -9,8 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: '/src/assets/css/main.css',  
-})
+  })
 export class AppComponent {
   
   testimonials = [
@@ -46,50 +46,143 @@ export class AppComponent {
       active: false,
     },
   ];
+  cookieChoice: 'accepted' | 'rejected' | null = null;
+  testimonialExpanded: Record<number, boolean> = {};
+  private readonly formOpenedAt = Date.now();
+
   contactForm = {
     nombre: '',
     email: '',
     asunto: '',
     mensaje: '',
+    website: '',
+    privacyAccepted: false,
   };
   loading: boolean = false;
   successMessage: string = '';
   errorMessage: string = '';
 
   constructor() {
-    emailjs.init('2MUowbrWGE4htzLLK'); // Inicializa EmailJS con tu User ID
+    emailjs.init('2MUowbrWGE4htzLLK');
+    try {
+      const savedChoice = localStorage.getItem('cwc-cookie-choice');
+      if (savedChoice === 'accepted' || savedChoice === 'rejected') {
+        this.cookieChoice = savedChoice;
+        if (savedChoice === 'accepted') setTimeout(() => this.loadOptionalServices(), 0);
+      }
+    } catch {
+      this.cookieChoice = null;
+    }
   }
 
   toggleFAQ(item: any) {
-    item.active = !item.active; // Cambia el estado activo de la pregunta
+    item.active = !item.active;
   }
 
-  onSubmit() {
-    this.loading = true; // Mostrar loading
-    emailjs.send('service_xtwmq2k', 'template_cmj5odv', {
-      nombre: this.contactForm.nombre,
-      email: this.contactForm.email,
-      asunto: this.contactForm.asunto,
-      mensaje: this.contactForm.mensaje,
-    })
-    .then(
-      (response) => {
-        console.log('Formulario enviado con éxito!', response.status, response.text);
-        alert('Formulario enviado con éxito'); // Mensaje de éxito con alert
-        this.loading = false; // Ocultar loading
-        // Limpiar el formulario
-        this.contactForm = {
-          nombre: '',
-          email: '',
-          asunto: '',
-          mensaje: '',
-        };
-      },
-      (error) => {
-        console.log('Error al enviar el formulario', error);
-        alert('Error al enviar el formulario'); // Mensaje de error con alert
-        this.loading = false; // Ocultar loading
+  toggleTestimonial(index: number): void {
+    this.testimonialExpanded[index] = !this.testimonialExpanded[index];
+  }
+
+  chooseCookies(accepted: boolean): void {
+    const choice = accepted ? 'accepted' : 'rejected';
+    this.cookieChoice = choice;
+    try {
+      localStorage.setItem('cwc-cookie-choice', choice);
+    } catch {
+      // The preference still applies for the current page view.
+    }
+    if (accepted) this.loadOptionalServices();
+    else this.removeOptionalServices();
+  }
+
+  private loadOptionalServices(): void {
+    const browserWindow = window as any;
+    if (!document.getElementById('google-translate-script')) {
+      browserWindow.googleTranslateElementInit = () => {
+        if (browserWindow.google?.translate?.TranslateElement && document.getElementById('google_translate_element')) {
+          new browserWindow.google.translate.TranslateElement({ pageLanguage: 'es' }, 'google_translate_element');
+        }
+      };
+      const translate = document.createElement('script');
+      translate.id = 'google-translate-script';
+      translate.async = true;
+      translate.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      document.head.appendChild(translate);
+    }
+
+    const measurementId = environment.googleAnalyticsId;
+    if (measurementId && !document.getElementById('cwc-google-analytics')) {
+      browserWindow.dataLayer = browserWindow.dataLayer || [];
+      browserWindow.gtag = (...args: unknown[]) => browserWindow.dataLayer.push(args);
+      browserWindow.gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied' });
+      browserWindow.gtag('consent', 'update', { analytics_storage: 'granted' });
+      browserWindow.gtag('js', new Date());
+      browserWindow.gtag('config', measurementId, { anonymize_ip: true });
+      const analytics = document.createElement('script');
+      analytics.id = 'cwc-google-analytics';
+      analytics.async = true;
+      analytics.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(measurementId);
+      document.head.appendChild(analytics);
+    }
+  }
+
+  private removeOptionalServices(): void {
+    const browserWindow = window as any;
+    if (browserWindow.gtag) {
+      browserWindow.gtag('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied' });
+    }
+    document.getElementById('cwc-google-analytics')?.remove();
+    document.getElementById('google-translate-script')?.remove();
+    const translateControl = document.getElementById('google_translate_element');
+    if (translateControl) translateControl.replaceChildren();
+    for (const cookie of document.cookie.split(';')) {
+      const name = cookie.split('=')[0]?.trim();
+      if (name === '_ga' || name?.startsWith('_ga_') || name === 'googtrans') {
+        document.cookie = name + '=; Max-Age=0; path=/; SameSite=Lax';
       }
-    );
+    }
+  }
+
+  onSubmit(): void {
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    if (this.contactForm.website.trim()) return;
+    if (!this.contactForm.privacyAccepted) {
+      this.errorMessage = 'Acepta la política de privacidad para enviar tu consulta.';
+      return;
+    }
+    if (Date.now() - this.formOpenedAt < 2500) {
+      this.errorMessage = 'Espera un momento y vuelve a enviar el formulario.';
+      return;
+    }
+
+    const now = Date.now();
+    try {
+      const lastSubmission = Number(localStorage.getItem('cwc-last-contact-submit') || 0);
+      if (now - lastSubmission < 30000) {
+        this.errorMessage = 'Espera 30 segundos antes de enviar otra consulta.';
+        return;
+      }
+      localStorage.setItem('cwc-last-contact-submit', String(now));
+    } catch {
+      // Continue with the in-page honeypot and completion-time checks.
+    }
+
+    this.loading = true;
+    emailjs.send('service_xtwmq2k', 'template_cmj5odv', {
+      nombre: this.contactForm.nombre.trim(),
+      email: this.contactForm.email.trim(),
+      asunto: this.contactForm.asunto.trim(),
+      mensaje: this.contactForm.mensaje.trim(),
+    }).then(() => {
+      this.successMessage = 'Tu mensaje se envió correctamente. Gracias por escribirnos.';
+      this.contactForm = { nombre: '', email: '', asunto: '', mensaje: '', website: '', privacyAccepted: false };
+      this.loading = false;
+    }).catch(() => {
+      this.errorMessage = 'No se pudo enviar tu mensaje. Intenta de nuevo o contáctanos por WhatsApp.';
+      this.loading = false;
+      try { localStorage.removeItem('cwc-last-contact-submit'); } catch { /* storage may be unavailable */ }
+    });
   }
 }

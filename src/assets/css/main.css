@@ -20,18 +20,18 @@
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
-  --background-color: #ffffffc9; /* Background color for the entire website, including individual sections */
-  --default-color: #000000; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #040677; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #ff0000; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --background-color: #f7f9fc; /* Background color for the entire website, including individual sections */
+  --default-color: #172033; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #10213b; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #a51d2d; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #000000; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
-  --nav-color: #0515f3;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ff0000; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-color: #173e78;  /* The default color of the main navmenu links */
+  --nav-hover-color: #9f1d2d; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
 }
 
@@ -45,7 +45,7 @@
 .dark-background {
   --background-color: #ffffff;
   --default-color: #919191c9;
-  --heading-color: blue;
+  --heading-color: #ffffff;
   --surface-color: #ffffff;
   --contrast-color: #000000;
 }
@@ -1580,3 +1580,188 @@ section,
 }
 
  
+
+/* Accessibility, responsive testimonials, consent and performance refinements */
+html { scroll-behavior: smooth; }
+body { color: #172033; background-color: #f7f9fc; }
+a { color: #8d1825; }
+a:hover { color: #6d1420; }
+:focus-visible {
+  outline: 3px solid #136caa !important;
+  outline-offset: 3px;
+}
+img { max-width: 100%; }
+.hero .hero-bg { width: 100%; height: 100%; object-fit: cover; }
+.dark-background {
+  --background-color: #10213b;
+  --default-color: #f8fafc;
+  --heading-color: #ffffff;
+  --surface-color: #18304e;
+  --contrast-color: #ffffff;
+}
+.light-background {
+  --background-color: #f0f4fa;
+  --default-color: #172033;
+  --heading-color: #10213b;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+}
+.testimonials {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+  background: linear-gradient(180deg, #f5f7fb, #eaf0f8);
+}
+.testimonials .container { max-width: 1120px; }
+.testimonial-grid { align-items: stretch; }
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  width: 100%;
+  max-width: none;
+  min-height: 100%;
+  padding: clamp(1.1rem, 2.5vw, 1.7rem);
+  border: 1px solid #dbe3ee;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 12px 32px rgb(16 33 59 / 8%);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgb(16 33 59 / 13%);
+}
+.testimonial-person { display: flex; align-items: center; gap: 1rem; }
+.testimonial-img {
+  flex: 0 0 72px;
+  width: 72px;
+  height: 72px;
+  margin: 0;
+  border: 3px solid #dce8f6;
+  object-fit: cover;
+}
+.testimonial-content { min-width: 0; max-width: none; }
+.testimonial-content h3 { color: #10213b; font-size: 1.05rem; line-height: 1.35; }
+.testimonial-content h4 { color: #475569; font-size: .9rem; line-height: 1.45; }
+.testimonial-rating { color: #946200; font-size: 1rem; letter-spacing: .12em; }
+.testimonial-review {
+  margin: 0;
+  color: #293548;
+  font-size: .98rem;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+.testimonial-review.is-expanded { display: block; overflow: visible; }
+.testimonial-toggle {
+  align-self: flex-start;
+  min-height: 44px;
+  padding: .45rem .8rem;
+  border: 0;
+  border-radius: .65rem;
+  background: #eef4fb;
+  color: #153f70;
+  font-weight: 700;
+}
+.testimonial-toggle:hover { background: #dfeaf7; }
+.privacy-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  color: #27364c;
+  font-size: .95rem;
+  line-height: 1.6;
+}
+.privacy-consent input { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; margin-top: .2rem; accent-color: #17634d; }
+.honeypot-field {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.whatsapp-float {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 10000;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: 52px;
+  padding: .7rem 1.1rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: #13764d;
+  color: #fff !important;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+  font-weight: 700;
+}
+.whatsapp-float i { font-size: 1.45rem; }
+.whatsapp-float:hover { background: #0f5d3d; transform: translateY(-2px); }
+.cookie-banner {
+  position: fixed;
+  z-index: 10020;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 1rem;
+  background: rgb(16 33 59 / 96%);
+  color: #f8fafc;
+  box-shadow: 0 18px 48px rgb(0 0 0 / 30%);
+  backdrop-filter: blur(18px);
+}
+.cookie-banner h2 { margin: 0 0 .3rem; color: #fff; font-size: 1.1rem; }
+.cookie-banner p { margin: 0; color: #e2e8f0; font-size: .9rem; line-height: 1.55; }
+.cookie-banner a { color: #bfdbfe; text-decoration: underline; }
+.cookie-actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; justify-content: flex-end; gap: .6rem; }
+.cookie-actions button, .cookie-settings {
+  min-height: 44px;
+  padding: .55rem .85rem;
+  border-radius: .65rem;
+  font-weight: 700;
+}
+.cookie-reject { border: 1px solid #cbd5e1; background: transparent; color: #fff; }
+.cookie-accept { border: 1px solid #fff; background: #fff; color: #10213b; }
+.cookie-settings {
+  position: fixed;
+  z-index: 10000;
+  bottom: 1rem;
+  left: 1rem;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #10213b;
+  box-shadow: 0 6px 18px rgb(0 0 0 / 18%);
+}
+@media (max-width: 720px) {
+  .cookie-banner { bottom: 5.5rem; flex-direction: column; align-items: stretch; }
+  .cookie-actions { justify-content: stretch; }
+  .cookie-actions button { flex: 1 1 10rem; }
+}
+@media (max-width: 480px) {
+  .whatsapp-float { right: .75rem; bottom: .75rem; width: 54px; height: 54px; justify-content: center; padding: .5rem; }
+  .whatsapp-float span { display: none; }
+  .cookie-settings { bottom: .75rem; left: .75rem; min-height: 48px; }
+  .testimonial-card { padding: 1rem; }
+  .testimonial-img { flex-basis: 60px; width: 60px; height: 60px; }
+  .testimonial-review { font-size: .95rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}

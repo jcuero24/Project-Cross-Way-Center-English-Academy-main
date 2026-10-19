@@ -29,23 +29,20 @@
             "assets": [
               {
                 "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              },
+              {
+                "glob": "**/*",
                 "input": "src/assets",
-                "output": "assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/img",
-                "output": "img"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/cross-way-images",
-                "output": "cross-way-images"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/assets/cross-way-images/slider",
-                "output": "cross-way-images/slider"
+                "output": "assets",
+                "ignore": [
+                  "**/*.map",
+                  "**/*.scss",
+                  "**/*.rtl.css",
+                  "**/*.rtl.min.css",
+                  "**/prb.txt"
+                ]
               }
             ],
             "styles": [
@@ -124,7 +121,7 @@
                 "glob": "**/*",
                 "input": "src/assets/cross-way-images",
                 "output": "cross-way-images"
-              } 
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",

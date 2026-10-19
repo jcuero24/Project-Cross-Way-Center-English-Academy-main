@@ -6,24 +6,27 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 
-<body class="index-page">
+<div class="index-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <a href="#" class="logo d-flex align-items-center">
-            <!--   <img src="assets/img/cross-way-images/logo-with-license.jpeg" alt="" style="width: 250px; height: 2000px;"> -->
+      <a href="#hero" class="logo d-flex align-items-center">
+            <!--   <img src="assets/img/cross-way-images/logo-with-license.jpeg" alt="Logotipo de Cross Way Center" style="width: 250px; height: 2000px;"> -->
       <h3 class="sitename">Academia CWC</h3>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="#">Inicio</a></li>
+          <li><a href="#hero">Inicio</a></li>
           <li><a href="#about">Acerca de</a></li>
           <li><a href="#services">Servicios</a></li>
           <li><a href="#gallery">Galería</a></li>
           <li><a href="#testimonials">Testimonios</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#faq">FAQ</a></li>
+            <li><a href="/legal/aviso-legal.html">Aviso legal</a></li>
+            <li><a href="/legal/politica-privacidad.html">Privacidad</a></li>
+            <li><a href="/legal/aviso-cookies.html">Cookies</a></li>
           <li><a href="#contact">Contacto</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -36,12 +39,12 @@
 
     <!-- Home Section -->
     <section id="hero" class="hero section dark-background">
-      <img src="assets/img/hero-bg-2.jpg" alt="" class="hero-bg">
+      <img src="assets/img/hero-bg-2.jpg" alt="" aria-hidden="true" class="hero-bg" fetchpriority="high">
 
       <div class="container">
         <div class="row gy-4 justify-content-between">
           <div class="col-lg-4 order-lg-last hero-img" data-aos="zoom-out" data-aos-delay="100">
-          <img src="assets/img/logo-without-license-removebg-preview.png" class="img-fluid animated" alt="" >
+          <img src="assets/img/logo-without-license-removebg-preview.png" class="img-fluid animated" alt="Logotipo de Cross Way Center" width="380" height="380" fetchpriority="high" decoding="async">
           </div>
 
           <div class="col-lg-6  d-flex flex-column justify-content-center" data-aos="fade-in">
@@ -49,8 +52,9 @@
             <h1><span>Cross Way Center</span></h1>
             <h2>Fundada en 1986.</h2>
             <div class="d-flex">
-              <a href="#about" class="btn-get-started">Empecémos!</a>
-              <a href="https://youtu.be/3uqa2l1IPgA?si=rxMNowvTASYIZRLm" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><h5>Mirar Video</h5></a>
+              <a href="https://wa.me/573173798422?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" class="btn-get-started" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-whatsapp me-2" aria-hidden="true"></i>Hablar por WhatsApp
+              </a>
             </div>
           </div>
 
@@ -190,7 +194,7 @@
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="100">
-            <img src="assets/img/details-1.png" class="img-fluid" alt="">
+            <img src="assets/img/details-1.png" class="img-fluid" alt="Ilustración de los cursos de inglés de Cross Way Center" loading="lazy" decoding="async">
           </div>
           <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
             <h3>Curso de inglés para niños (Kids)</h3>
@@ -207,7 +211,7 @@
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 order-1 order-md-2 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
-            <img src="assets/img/details-2.png" class="img-fluid" alt="">
+            <img src="assets/img/details-2.png" class="img-fluid" alt="Ilustración del método de aprendizaje de inglés" loading="lazy" decoding="async">
           </div>
           <div class="col-md-7 order-2 order-md-1" data-aos="fade-up" data-aos-delay="200">
             <h3>Programa Basico para Adultos</h3>
@@ -224,7 +228,7 @@
 
         <div class="row gy-4 align-items-center features-item">
           <div class="col-md-5 d-flex align-items-center" data-aos="zoom-out">
-            <img src="assets/img/details-3.png" class="img-fluid" alt="">
+            <img src="assets/img/details-3.png" class="img-fluid" alt="Estudiantes practicando inglés en clase" loading="lazy" decoding="async">
           </div>
           <div class="col-md-7" data-aos="fade-up">
             <h3>Curso Avanzado para Adultos</h3>
@@ -257,7 +261,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/in-class-1.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/in-class-1.jpeg" alt="" width="300" height="200" class="img-fluid">
+                <img src="assets/img/cross-way-images/in-class-1.jpeg" alt="Estudiantes participando en una clase de inglés" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -265,7 +269,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/in-class-2.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/in-class-2.jpeg" alt="" width="300" height="200" class="img-fluid">
+                <img src="assets/img/cross-way-images/in-class-2.jpeg" alt="Grupo practicando inglés en el aula" width="300" height="200" class="img-fluid" loading="lazy" decoding="async">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -273,7 +277,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/teacher-jp1.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/teacher-jp1.jpeg" alt="" width="300" height="200" class="img-fluid">
+                <img src="assets/img/cross-way-images/teacher-jp1.jpeg" alt="Docente de Cross Way Center guiando una clase" width="300" height="200" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -281,7 +285,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/student1.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/student1.jpeg" alt="" width="300" height="200" class="img-fluid">
+                <img src="assets/img/cross-way-images/student1.jpeg" alt="Estudiante de inglés en Cross Way Center" width="300" height="200" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -289,7 +293,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/jp-new.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/jp-new.jpeg" alt="" width="300" height="200" class="img-fluid">
+                <img src="assets/img/cross-way-images/jp-new.jpeg" alt="Estudiantes y docentes de Cross Way Center" width="300" height="200" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -297,7 +301,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/kids.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/kids.jpeg" alt="" width="300" height="200" class="img-fluid">
+                <img src="assets/img/cross-way-images/kids.jpeg" alt="Niños participando en una actividad de inglés" width="300" height="200" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -305,7 +309,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/teacher-juanc.jpeg" class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/teacher-juanc.jpeg" alt="" width="300" height="200" class="img-fluid">
+                <img src="assets/img/cross-way-images/teacher-juanc.jpeg" alt="Profesor de inglés en una sesión académica" width="300" height="200" class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -313,7 +317,7 @@
           <div class="col-lg-3 col-md-4">
             <div class="gallery-item">
               <a href="assets/img/cross-way-images/jd2.jpeg " class="glightbox" data-gallery="images-gallery">
-                <img src="assets/img/cross-way-images/jd2.jpeg" alt=""  width="300" height="200"class="img-fluid">
+                <img src="assets/img/cross-way-images/jd2.jpeg" alt="Actividad de aprendizaje en Cross Way Center"  width="300" height="200"class="img-fluid">
               </a>
             </div>
           </div><!-- End Gallery Item -->
@@ -331,17 +335,26 @@
       <div><span></span> <span class="description-title"> ¿Qué dicen de nosotros? </span></div>
     </div><!-- End Section Title -->
     <div class="container">
-      <div class="testimonial .row">
-        <div class="testimonial .col-12" *ngFor="let testimonial of testimonials">
-          <div class="testimonial-card">
-            <img [src]="testimonial.img" class="testimonial-img" alt="{{ testimonial.name }}">
-            <div class="testimonial-content">
-              <h3>{{ testimonial.name }}</h3>
-              <h4>{{ testimonial.title }}</h4>
-              <div class="testimonial-rating">★★★★★</div>
-              <p>{{ testimonial.review }}</p>
+      <div class="row g-4 testimonial-grid">
+        <div class="col-12 col-lg-6" *ngFor="let testimonial of testimonials; let i = index">
+          <article class="testimonial-card h-100">
+            <div class="testimonial-person">
+              <img [src]="testimonial.img" class="testimonial-img" [alt]="'Foto de ' + testimonial.name"
+                width="72" height="72" loading="lazy" decoding="async">
+              <div class="testimonial-content">
+                <h3>{{ testimonial.name }}</h3>
+                <h4>{{ testimonial.title }}</h4>
+                <div class="testimonial-rating" aria-label="Valoración: cinco de cinco estrellas">★★★★★</div>
+              </div>
             </div>
-          </div>
+            <blockquote class="testimonial-review" [class.is-expanded]="testimonialExpanded[i]">
+              “{{ testimonial.review }}”
+            </blockquote>
+            <button type="button" class="testimonial-toggle" (click)="toggleTestimonial(i)"
+              [attr.aria-expanded]="!!testimonialExpanded[i]">
+              {{ testimonialExpanded[i] ? 'Leer menos' : 'Leer testimonio completo' }}
+            </button>
+          </article>
         </div>
       </div>
     </div>
@@ -366,13 +379,13 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="member">
-              <div class="pic"><img src="assets/img/cross-way-images/principal.jpeg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/cross-way-images/principal.jpeg" class="img-fluid" alt="Juan Pablo Cuero, director de Cross Way Center" loading="lazy" decoding="async"></div>
               <div class="member-info">
                 <h4>Juan Pablo Cuero</h4>
                 <span>Director</span>
                 <div class="social">
-                  <a href="https://www.facebook.com/CrossWayCenter.Co"><i class="bi bi-facebook"></i></a>
-                  <a href="https://www.instagram.com/cross_way_center?igsh=MTI0d3Zjdzk5MjNhNQ=="><i class="bi bi-instagram"></i></a>
+                  <a href="https://www.facebook.com/CrossWayCenter.Co" aria-label="Facebook de Cross Way Center" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+                  <a href="https://www.instagram.com/cross_way_center?igsh=MTI0d3Zjdzk5MjNhNQ==" aria-label="Instagram de Cross Way Center" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram" aria-hidden="true"></i></a>
                 </div>
               </div>
             </div>
@@ -380,7 +393,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="member">
-              <div class="pic"><img src="assets/img/cross-way-images/teacher-l.jpeg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/cross-way-images/teacher-l.jpeg" class="img-fluid" alt="Docente de inglés de Cross Way Center" loading="lazy" decoding="async"></div>
               <div class="member-info">
                 <h4>Luis Alberto Gallego</h4>
                 <span>Coordinador Académico</span>
@@ -395,7 +408,7 @@
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="member">
-              <div class="pic"><img src="assets/img/cross-way-images/sandra-near.jpeg" class="img-fluid" alt=""></div>
+              <div class="pic"><img src="assets/img/cross-way-images/sandra-near.jpeg" class="img-fluid" alt="Docente Sandra de Cross Way Center" loading="lazy" decoding="async"></div>
               <div class="member-info">
                 <h4>Sandra Monroe</h4>
                 <span>Secretaria</span>
@@ -445,7 +458,7 @@
       </div>
 
       <div class="col-lg-5 order-1 order-lg-2">
-        <img src="assets/img/faq.jpg" class="img-fluid" alt="Preguntas Frecuentes" data-aos="zoom-in" data-aos-delay="100">
+        <img src="assets/img/faq.jpg" class="img-fluid" alt="Estudiantes de Cross Way Center aprendiendo inglés" loading="lazy" decoding="async" data-aos="zoom-in" data-aos-delay="100">
       </div>
     </div>
 
@@ -492,24 +505,40 @@
 
       <div class="col-lg-8">
         <form class="php-email-form" (ngSubmit)="onSubmit()" data-aos="fade-up" data-aos-delay="200">
+          <div class="honeypot-field" aria-hidden="true">
+            <label for="contact-website">Deja este campo vacío</label>
+            <input id="contact-website" type="text" [(ngModel)]="contactForm.website" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="row gy-4">
             <div class="col-md-6">
-              <input type="text" class="form-control" placeholder="Nombre Completo" [(ngModel)]="contactForm.nombre" name="nombre" required>
+              <label class="visually-hidden" for="contact-name">Nombre completo</label>
+              <input id="contact-name" type="text" class="form-control" placeholder="Nombre completo" aria-label="Nombre completo" [(ngModel)]="contactForm.nombre" name="nombre" maxlength="100" required>
             </div>
             <div class="col-md-6">
-              <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="contactForm.email" name="email" required>
+              <label class="visually-hidden" for="contact-email">Correo electrónico</label>
+              <input id="contact-email" type="email" class="form-control" placeholder="Correo electrónico" aria-label="Correo electrónico" [(ngModel)]="contactForm.email" name="email" maxlength="150" required>
             </div>
             <div class="col-md-12">
-              <input type="text" class="form-control" placeholder="Asunto" [(ngModel)]="contactForm.asunto" name="asunto" required>
+              <label class="visually-hidden" for="contact-subject">Asunto</label>
+              <input id="contact-subject" type="text" class="form-control" placeholder="Asunto" aria-label="Asunto" [(ngModel)]="contactForm.asunto" name="asunto" maxlength="120" required>
             </div>
             <div class="col-md-12">
-              <textarea class="form-control" rows="6" placeholder="Mensaje" [(ngModel)]="contactForm.mensaje" name="mensaje" required></textarea>
+              <label class="visually-hidden" for="contact-message">Mensaje</label>
+              <textarea id="contact-message" class="form-control" rows="6" placeholder="Mensaje" aria-label="Mensaje" [(ngModel)]="contactForm.mensaje" name="mensaje" maxlength="3000" required></textarea>
+            </div>
+            <div class="col-md-12">
+              <label class="privacy-consent">
+                <input type="checkbox" [(ngModel)]="contactForm.privacyAccepted" name="privacyAccepted" required>
+                <span>Autorizo el tratamiento de mis datos para responder esta consulta. He leído la
+                  <a href="/legal/politica-privacidad.html" target="_blank" rel="noopener noreferrer">Política de privacidad</a>.
+                </span>
+              </label>
             </div>
             <div class="col-md-12 text-center">
-              <div *ngIf="loading" class="loading">Cargando...</div>
-              <div *ngIf="successMessage" class="sent-message">{{ successMessage }}</div>
-              <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-              <button type="submit" [disabled]="loading">Enviar Contacto</button>
+              <div *ngIf="loading" class="loading" role="status">Enviando...</div>
+              <div *ngIf="successMessage" class="sent-message" role="status">{{ successMessage }}</div>
+              <div *ngIf="errorMessage" class="error-message" role="alert">{{ errorMessage }}</div>
+              <button type="submit" [disabled]="loading">Enviar consulta</button>
             </div>
           </div>
         </form>
@@ -525,14 +554,15 @@
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="#" class="logo d-flex align-items-center">
+          <a href="#hero" class="logo d-flex align-items-center">
             <span class="sitename">Cross Way Center</span>
           </a>
           <div class="footer-contact pt-3">
             <p>Sajonia / Calle 34 #20-41   </p>
             <p>Tuluá - Valle del Cauca, TLÁ 763022</p>
             <p class="mt-3"><strong>Celular:</strong> <span> +57 317 379 8422</span></p>
-            <p><strong>Email:</strong> <span> crosswaycentertulua&#64;gmail.com</span></p>
+            <p><strong>Email:</strong> <a href="mailto:crosswaycentertulua@gmail.com">crosswaycentertulua@gmail.com</a></p>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Cross+Way+Center%2C+Calle+34+20-41%2C+Tulu%C3%A1" target="_blank" rel="noopener noreferrer">Ver ubicación en Google Maps</a></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href="https://www.facebook.com/CrossWayCenter.Co"><i class="bi bi-facebook"></i></a>
@@ -543,14 +573,17 @@
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Links</h4>
           <ul>
-            <li><a href="#">Inicio</a></li>
+            <li><a href="#hero">Inicio</a></li>
             <li><a href="#testimonials">Testimonios</a></li>
             <li><a href="#services">Servicios</a></li>
             <li><a href="#about">Acerca de</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li><a href="/legal/aviso-legal.html">Aviso legal</a></li>
+            <li><a href="/legal/politica-privacidad.html">Privacidad</a></li>
+            <li><a href="/legal/aviso-cookies.html">Cookies</a></li>
             <li>
               <a
-                href="https://wa.me/+573173798422"
+                href="https://wa.me/573173798422"
                 target="_blank"
                 >Whatsapp</a
               >
@@ -570,20 +603,27 @@
     </div>
   </footer>
 
+  <div id="google_translate_element" class="translate-control" aria-label="Selector de idioma"></div>
+  <a class="whatsapp-float" href="https://wa.me/573173798422?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20cursos%20de%20ingl%C3%A9s" target="_blank" rel="noopener noreferrer" aria-label="Escribir a Cross Way Center por WhatsApp">
+    <i class="bi bi-whatsapp" aria-hidden="true"></i><span>Escríbenos</span>
+  </a>
+
+  <button *ngIf="cookieChoice !== null" class="cookie-settings" type="button" (click)="cookieChoice = null">Configurar cookies</button>
+  <section *ngIf="cookieChoice === null" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
+    <div>
+      <h2 id="cookie-title">Tu privacidad importa</h2>
+      <p id="cookie-description">Usamos solo lo necesario para el sitio. Google Translate y la analítica opcional se cargan si aceptas las cookies opcionales. <a href="/legal/aviso-cookies.html">Lee el aviso de cookies</a>.</p>
+    </div>
+    <div class="cookie-actions">
+      <button type="button" class="cookie-reject" (click)="chooseCookies(false)">Solo necesarias</button>
+      <button type="button" class="cookie-accept" (click)="chooseCookies(true)">Aceptar opcionales</button>
+    </div>
+  </section>
+
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#hero" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-</body>
+</div>
