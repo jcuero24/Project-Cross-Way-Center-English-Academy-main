@@ -2122,3 +2122,42 @@ html[data-theme="dark"] #scroll-top { background: #1d4ed8; }
 @media (prefers-reduced-motion: reduce) {
   .cwc-chat-launcher:hover { transform: translateY(-50%); }
 }
+
+/* The hero uses a flat, readable surface in both color themes. */
+#hero {
+  --background-color: #edf0f5;
+  --default-color: #263b58;
+  --heading-color: #102b52;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  color: var(--default-color);
+  background: #edf0f5;
+}
+#hero .hero-bg,
+#hero:before { display: none; }
+#hero h1,
+#hero h2 { color: #102b52; }
+#hero h1 span { color: #1d4ed8; border-bottom-color: #b42336; }
+#hero p,
+#hero .hero-founded { color: #3e526e; }
+#hero .wave1 use,
+#hero .wave2 use,
+#hero .wave3 use { fill: #dbe1e9; }
+
+html[data-theme="dark"] #hero {
+  --background-color: #ffffff;
+  --default-color: #263b58;
+  --heading-color: #102b52;
+  --surface-color: #f8fafc;
+  --contrast-color: #ffffff;
+  color: #263b58;
+  background: #ffffff;
+}
+html[data-theme="dark"] #hero h1,
+html[data-theme="dark"] #hero h2 { color: #102b52; }
+html[data-theme="dark"] #hero h1 span { color: #1d4ed8; }
+html[data-theme="dark"] #hero p,
+html[data-theme="dark"] #hero .hero-founded { color: #3e526e; }
+html[data-theme="dark"] #hero .wave1 use,
+html[data-theme="dark"] #hero .wave2 use,
+html[data-theme="dark"] #hero .wave3 use { fill: #102b52; }
