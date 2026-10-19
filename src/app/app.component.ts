@@ -149,7 +149,7 @@ export class AppComponent {
     if (this.chatOpen && this.chatMessages.length === 0) {
       this.chatMessages = [{
         role: 'assistant',
-        text: this.t('¡Hola! Soy el asistente virtual de Cross Way Center. Con 40 años de experiencia enseñando inglés, puedo ayudarte con cursos, horarios, precios y ubicación. ¿Qué te gustaría saber?', 'Hi! I’m the Cross Way Center virtual assistant. Backed by 40 years of English teaching experience, I can help with courses, schedules, prices, and location. What would you like to know?'),
+        text: this.t('¡Hola! Soy Kross, el asistente virtual de Cross Way Center. Con 40 años de experiencia enseñando inglés, puedo ayudarte con cursos, horarios, precios y ubicación. ¿Qué te gustaría saber?', 'Hi! I’m Kross, the Cross Way Center virtual assistant. With 40 years of English teaching experience, I can help with courses, schedules, prices, and location. What would you like to know?'),
       }];
     }
   }

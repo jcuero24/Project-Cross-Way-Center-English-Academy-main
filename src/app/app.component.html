@@ -10,9 +10,8 @@
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-      <a href="#hero" class="logo d-flex align-items-center">
-            <!--   <img src="assets/img/cross-way-images/logo-with-license.jpeg" alt="Logotipo de Cross Way Center" style="width: 250px; height: 2000px;"> -->
-      <h3 class="sitename">Academia CWC</h3>
+      <a href="#hero" class="logo d-flex align-items-center" [attr.aria-label]="t('Inicio de Cross Way Center', 'Cross Way Center home')">
+        <img src="assets/img/cwc1.ico" alt="Cross Way Center" width="44" height="44" decoding="async">
       </a>
 
       <div class="site-controls" aria-label="Site settings">
@@ -623,8 +622,8 @@
 
   <section *ngIf="chatOpen" class="cwc-chat-panel" role="dialog" aria-modal="false" aria-labelledby="chat-title" (keydown)="closeChatOnEscape($event)">
     <header class="cwc-chat-header">
-      <img src="assets/img/chatbot-assistant.png" alt="" width="44" height="44" decoding="async">
-      <div><h2 id="chat-title">{{ t('Asistente Cross Way', 'Cross Way assistant') }}</h2><p>{{ t('En línea · Orientación sobre nuestros cursos', 'Online · Course information') }}</p></div>
+      <img src="assets/img/chatbot-assistant-white.png" alt="" width="44" height="44" decoding="async">
+      <div><h2 id="chat-title">Kross</h2><p>{{ t('En línea · 40 años enseñando inglés', 'Online · 40 years teaching English') }}</p></div>
       <button type="button" class="cwc-chat-close" (click)="toggleChat()" [attr.aria-label]="t('Cerrar chat', 'Close chat')">×</button>
     </header>
     <div class="cwc-chat-messages" #chatMessagesView aria-live="polite" aria-relevant="additions text">
@@ -645,11 +644,10 @@
     <a class="cwc-chat-human" href="https://wa.me/573173798422?text=Hola%2C%20quiero%20hablar%20con%20el%20equipo%20de%20Cross%20Way%20Center" target="_blank" rel="noopener noreferrer">{{ t('Hablar con nuestro equipo por WhatsApp', 'Talk to our team on WhatsApp') }} <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
     <p class="cwc-chat-note">{{ t('Asistente virtual para preguntas frecuentes. No recopila datos personales.', 'Virtual assistant for common questions. It does not collect personal data.') }}</p>
   </section>
-  <button type="button" class="cwc-chat-launcher" (click)="toggleChat()" [attr.aria-expanded]="chatOpen" [attr.aria-label]="chatOpen ? t('Cerrar asistente virtual', 'Close virtual assistant') : t('Abrir asistente virtual', 'Open virtual assistant')">
-    <img src="assets/img/chatbot-assistant.png" alt="" width="72" height="72" loading="lazy" decoding="async">
+  <button *ngIf="!chatOpen" type="button" class="cwc-chat-launcher" (click)="toggleChat()" [attr.aria-expanded]="chatOpen" [attr.aria-label]="t('Abrir chat con Kross', 'Open chat with Kross')" title="Kross">
+    <img src="assets/img/chatbot-assistant-white.png" alt="" width="72" height="72" loading="lazy" decoding="async">
   </button>
 
-  <button *ngIf="cookieChoice !== null" class="cookie-settings" type="button" (click)="cookieChoice = null">{{ t('Configurar cookies', 'Cookie settings') }}</button>
   <section *ngIf="cookieChoice === null" class="cookie-banner" role="dialog" aria-labelledby="cookie-title" aria-describedby="cookie-description">
     <div>
       <h2 id="cookie-title">{{ t('Tu privacidad importa', 'Your privacy matters') }}</h2>
