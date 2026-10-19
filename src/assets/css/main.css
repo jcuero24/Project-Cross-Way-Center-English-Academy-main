@@ -2146,18 +2146,18 @@ html[data-theme="dark"] #scroll-top { background: #1d4ed8; }
 
 html[data-theme="dark"] #hero {
   --background-color: #ffffff;
-  --default-color: #263b58;
-  --heading-color: #102b52;
+  --default-color: #29313b;
+  --heading-color: #20252d;
   --surface-color: #f8fafc;
   --contrast-color: #ffffff;
-  color: #263b58;
+  color: #29313b;
   background: #ffffff;
 }
 html[data-theme="dark"] #hero h1,
-html[data-theme="dark"] #hero h2 { color: #102b52; }
-html[data-theme="dark"] #hero h1 span { color: #1d4ed8; }
+html[data-theme="dark"] #hero h2 { color: #20252d; }
+html[data-theme="dark"] #hero h1 span { color: #b42336; }
 html[data-theme="dark"] #hero p,
-html[data-theme="dark"] #hero .hero-founded { color: #3e526e; }
+html[data-theme="dark"] #hero .hero-founded { color: #414a56; }
 html[data-theme="dark"] #hero .wave1 use,
 html[data-theme="dark"] #hero .wave2 use,
 html[data-theme="dark"] #hero .wave3 use { fill: #102b52; }
