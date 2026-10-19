@@ -416,10 +416,11 @@
             <div class="col-12">
               <fieldset class="testimonial-rating-picker">
                 <legend>{{ t('Tu valoración', 'Your rating') }}</legend>
-                <label *ngFor="let star of [1, 2, 3, 4, 5]" [class.selected]="star <= testimonialForm.rating">
-                  <input type="radio" name="testimonialRating" [value]="star" [(ngModel)]="testimonialForm.rating" [attr.aria-label]="star + ' ' + t('estrellas', 'stars')">
-                  <span aria-hidden="true">★</span>
-                </label>
+                <div class="testimonial-rating-options" role="radiogroup" [attr.aria-label]="t('Selecciona de una a cinco estrellas', 'Choose one to five stars')">
+                  <button *ngFor="let star of [1, 2, 3, 4, 5]" type="button" class="testimonial-rating-option" [class.selected]="star <= testimonialForm.rating" [attr.aria-pressed]="testimonialForm.rating === star" [attr.aria-label]="star + ' ' + t('estrellas', 'stars')" (click)="setTestimonialRating(star)">
+                    <span aria-hidden="true">★</span>
+                  </button>
+                </div>
               </fieldset>
             </div>
             <div class="col-12">
@@ -460,7 +461,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>{{ t('Equipo', 'Team') }}</h2>
-        <div><span class="description-title">{{ t('Nuestro equipo', 'Our team') }}</span></div>
+        <div><span class="description-title">{{ t('Conoce nuestro equipo', 'Meet our team') }}</span></div>
       </div><!-- End Section Title -->
 
       <div class="container">

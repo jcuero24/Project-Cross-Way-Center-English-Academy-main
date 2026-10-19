@@ -212,6 +212,10 @@ export class AppComponent {
     this.testimonialExpanded[index] = !this.testimonialExpanded[index];
   }
 
+  setTestimonialRating(rating: number): void {
+    if (rating >= 1 && rating <= 5) this.testimonialForm.rating = rating;
+  }
+
   submitTestimonial(): void {
     this.testimonialSuccessMessage = '';
     this.testimonialErrorMessage = '';

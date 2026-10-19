@@ -2522,3 +2522,79 @@ html[data-theme="dark"] #faq .faq-container .faq-item:hover .faq-icon,
 html[data-theme="dark"] #faq .faq-container .faq-item:hover .faq-toggle,
 html[data-theme="dark"] #faq .faq-container .faq-item:focus-within h3,
 html[data-theme="dark"] #faq .faq-container .faq-item:focus-within .faq-content p { color: #b42336; }
+
+/* Give the contact details clear white cards against the shared navy background. */
+html[data-theme="dark"] #contact .info-item {
+  border: 1px solid #e3e8ef;
+  border-radius: 1rem;
+  background: #ffffff !important;
+  color: #102b52;
+  box-shadow: 0 12px 30px rgb(0 0 0 / 18%);
+}
+html[data-theme="dark"] #contact .info-item h3,
+html[data-theme="dark"] #contact .info-item p { color: #102b52; }
+html[data-theme="dark"] #contact .info-item > i {
+  border-radius: 50%;
+  background: #f4e8ea;
+  color: #b42336;
+}
+
+/* Cycle through one solid brand color per testimonial card. */
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 1) .testimonial-card {
+  border-color: #e8edf3;
+  background: #ffffff;
+}
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 2) .testimonial-card {
+  border-color: #49678d;
+  background: #173e78;
+}
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n) .testimonial-card {
+  border-color: #d95867;
+  background: #a51e31;
+}
+html[data-theme="dark"] .testimonial-card::before { display: none; }
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 1) .testimonial-content h3,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 1) .testimonial-review { color: #102b52; }
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 1) .testimonial-content h4,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 1) .testimonial-translation-note { color: #4b5b70; }
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 2) .testimonial-content h3,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 2) .testimonial-content h4,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 2) .testimonial-review,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 2) .testimonial-translation-note,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n) .testimonial-content h3,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n) .testimonial-content h4,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n) .testimonial-review,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n) .testimonial-translation-note { color: #ffffff; }
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 1) .testimonial-toggle {
+  border-color: #173e78;
+  color: #173e78;
+}
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 2) .testimonial-toggle,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n) .testimonial-toggle {
+  border-color: rgb(255 255 255 / 80%);
+  color: #ffffff;
+}
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n + 2) .testimonial-toggle:hover,
+html[data-theme="dark"] .testimonial-grid > div:nth-child(3n) .testimonial-toggle:hover { background: rgb(255 255 255 / 16%); }
+
+/* Use actual buttons for reliable mouse, touch, and keyboard star selection. */
+.testimonial-rating-options { display: flex; align-items: center; gap: .2rem; }
+.testimonial-rating-option {
+  display: inline-grid;
+  width: 42px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: .5rem;
+  background: transparent;
+  color: #87919c;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.testimonial-rating-option.selected { color: #ffd166; }
+.testimonial-rating-option:hover,
+.testimonial-rating-option:focus-visible { background: rgb(255 255 255 / 14%); color: #ffe08a; }
+.testimonial-rating-option:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }
