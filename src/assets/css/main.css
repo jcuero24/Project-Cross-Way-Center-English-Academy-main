@@ -2270,6 +2270,7 @@ html[data-theme="dark"] .navmenu ul { background: #ffffff; }
   width: min(390px, calc(100vw - 8rem));
   height: min(680px, calc(100dvh - 2rem));
   max-height: calc(100dvh - 2rem);
+  translate: 0 -50%;
 }
 .cwc-chat-messages { min-height: 0; }
 @media (max-width: 767px) {
@@ -2278,11 +2279,11 @@ html[data-theme="dark"] .navmenu ul { background: #ffffff; }
 @media (max-width: 575px) {
   .cwc-chat-panel {
     top: 50%;
-    right: .65rem;
-    width: calc(100vw - 1.3rem);
+    right: 1rem;
+    width: calc(100vw - 2rem);
     height: min(680px, calc(100dvh - 1.3rem));
     max-height: calc(100dvh - 1.3rem);
-    transform: translateY(-50%);
+    translate: 0 -50%;
   }
   .footer-map { height: 210px; }
 }
